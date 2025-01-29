@@ -2,6 +2,8 @@ import { Menu, X } from "lucide-react"; // Icons for toggle button and user acco
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 // import logo2 from "../../assets/logo2.png";
+import { selectedUser } from "@/redux/features/auth/authSlice";
+import { useAppSelector } from "@/redux/hook";
 import logo from "../../assets/logo.png";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,7 +14,7 @@ const Navbar = () => {
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];
-  const user = true;
+  const user = useAppSelector(selectedUser);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -25,7 +27,7 @@ const Navbar = () => {
           {/* Left Side: Website Logo */}
           <Link to="/">
             <div className="flex-shrink-0 flex items-center">
-              <img src={logo} alt="logo" className="w-24" />
+              <img src={logo} alt="logo" className="w-20" />
               <h1 className="text-white text-2xl font-bold">RideHaven</h1>
             </div>
           </Link>
@@ -69,7 +71,7 @@ const Navbar = () => {
               ) : (
                 <NavLink
                   to="/login"
-                  className="text-md pb-2 py-1 px-6  rounded-full bg-[#1D202A] font-medium text-white"
+                  className="text-md pb-2 py-1 px-6  rounded-full bg-my-btn_clr font-medium text-white"
                 >
                   Login
                 </NavLink>
@@ -134,7 +136,7 @@ const Navbar = () => {
                 {!user && (
                   <NavLink
                     to="/login"
-                    className="text-md  py-2 px-6  rounded-full bg-[#1D202A] font-medium text-white"
+                    className="text-md  py-2 px-6  rounded-full bg-my-btn_clr font-medium text-white"
                   >
                     Login
                   </NavLink>

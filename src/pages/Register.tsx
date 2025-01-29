@@ -1,6 +1,7 @@
 import RHForm from "@/mycomponents/form/RHForm";
 import RHInput from "@/mycomponents/form/RHInput";
 import { FieldValues, SubmitHandler } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const handleSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -16,8 +17,15 @@ const Register = () => {
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
         <RHForm onSubmit={handleSubmit}>
-          {/* Email Field */}
-          <div className="space-y-2 text-my-text_clr">
+          <div className="space-y-2  text-my-text_clr">
+            <RHInput
+              type="text"
+              name="name"
+              label="Your name"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div className="mt-4 space-y-2 text-my-text_clr">
             <RHInput
               type="email"
               name="email"
@@ -45,6 +53,17 @@ const Register = () => {
             </button>
           </div>
         </RHForm>
+        <div className="text-white">
+          <p className="mt-4 text-sm text-center">
+            Already have an account ? Please{" "}
+            <Link
+              to="/login"
+              className="text-my-btn_clr underline underline-offset-4"
+            >
+              Login
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

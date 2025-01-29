@@ -12,9 +12,17 @@ type TInputProps = {
   label?: string;
   placeholder?: string;
   disabled?: boolean;
+  required?: boolean;
 };
 
-const RHInput = ({ type, name, label, placeholder, disabled }: TInputProps) => {
+const RHInput = ({
+  type,
+  name,
+  label,
+  placeholder,
+  disabled,
+  required,
+}: TInputProps) => {
   return (
     <FormField
       name={name}
@@ -27,6 +35,7 @@ const RHInput = ({ type, name, label, placeholder, disabled }: TInputProps) => {
               value={field.value ?? ""}
               type={type}
               disabled={disabled}
+              required={required}
               placeholder={placeholder}
               className="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500 
              text-sm md:text-base lg:text-lg transition-all duration-300"

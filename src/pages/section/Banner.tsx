@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button";
+import MyButton from "@/shared/MyButton";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -19,11 +20,9 @@ const Banner = () => {
             Discover the thrill of driving with our latest high-performance
             vehicles.
           </p>
-          <div className="mt-6">
-            <Button className="text-white bg-my-btn_clr px-6 py-3 rounded-lg text-lg font-semibold">
-              Explore Now
-            </Button>
-          </div>
+          <Link to="/all-products">
+            <MyButton text="Explore now" />
+          </Link>
         </motion.div>
 
         {/* Right Side - Car Image */}

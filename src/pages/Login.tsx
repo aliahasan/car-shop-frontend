@@ -1,10 +1,29 @@
 import RHForm from "@/mycomponents/form/RHForm";
 import RHInput from "@/mycomponents/form/RHInput";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { setUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/redux/hook";
+import { verifyToken } from "@/utils/verifyToken";
 import { FieldValues, SubmitHandler } from "react-hook-form";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const handleSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log("Form Data:", data);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const [loginData, { isLoading }] = useLoginMutation();
+  const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const toastId = "login";
+    const res = await loginData(data).unwrap();
+    console.log(res);
+    const user = verifyToken(res?.data as string);
+    if (!user) {
+      toast.error("Invalid credentials", { id: toastId });
+      return;
+    }
+    toast.success("Login success", { id: toastId });
+    dispatch(setUser({ user: user, token: res.data }));
+    navigate("/");
   };
 
   return (
@@ -24,6 +43,7 @@ const Login = () => {
               name="email"
               label="Email Address"
               placeholder="Enter your email"
+              required
             />
           </div>
 
@@ -34,6 +54,7 @@ const Login = () => {
               name="password"
               label="Password"
               placeholder="Enter your password"
+              required
             />
           </div>
           {/* Submit Button */}
@@ -42,10 +63,21 @@ const Login = () => {
               type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
-              Sign in
+              {isLoading ? "Please wait..." : "Sign in"}
             </button>
           </div>
         </RHForm>
+        <div className="text-white">
+          <p className="mt-4 text-sm text-center">
+            Don't have an account? Please{" "}
+            <Link
+              to="/register"
+              className="text-my-btn_clr underline underline-offset-4"
+            >
+              Register
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
