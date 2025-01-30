@@ -1,12 +1,15 @@
+// export default MainLayout;
 import { Outlet } from "react-router-dom";
 import Navbar from "../../pages/Header/Navbar";
 
 const MainLayout = () => {
   return (
-    <div>
-      <Navbar></Navbar>
+    <div className="flex flex-col min-h-screen">
+      {/* Navbar */}
+      <Navbar />
 
-      <div className="max-w-screen-2xl mx-auto px-4">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col max-w-screen-2xl mx-auto w-full px-4 overflow-hidden">
         <Outlet />
       </div>
     </div>

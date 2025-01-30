@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import RHForm from "@/mycomponents/form/RHForm";
 import RHInput from "@/mycomponents/form/RHInput";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
@@ -12,22 +13,31 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [loginData, { isLoading }] = useLoginMutation();
+
   const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = "login";
-    const res = await loginData(data).unwrap();
-    console.log(res);
-    const user = verifyToken(res?.data as string);
-    if (!user) {
-      toast.error("Invalid credentials", { id: toastId });
-      return;
+    try {
+      const res = await loginData(data).unwrap();
+      const user = verifyToken(res?.data as string);
+      if (!user) {
+        toast.error("Invalid credentials", { id: toastId });
+        return;
+      }
+      toast.success("Login success", { id: toastId });
+      dispatch(setUser({ user: user, token: res.data }));
+      navigate("/");
+    } catch (error: any) {
+      if (error.data && error.data.error) {
+        const errorMessage = error.data.message || "Failed to login";
+        toast.error(errorMessage, { id: toastId });
+      } else {
+        toast.error("Failed to login", { id: toastId });
+      }
     }
-    toast.success("Login success", { id: toastId });
-    dispatch(setUser({ user: user, token: res.data }));
-    navigate("/");
   };
 
   return (
-    <div className="flex  flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-white text-center text-2xl font-bold tracking-tight">
           Sign in to your account
@@ -57,6 +67,7 @@ const Login = () => {
               required
             />
           </div>
+
           {/* Submit Button */}
           <div className="mt-6">
             <button
@@ -67,6 +78,8 @@ const Login = () => {
             </button>
           </div>
         </RHForm>
+
+        {/* Register Link */}
         <div className="text-white">
           <p className="mt-4 text-sm text-center">
             Don't have an account? Please{" "}
