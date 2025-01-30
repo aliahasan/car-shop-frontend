@@ -3,10 +3,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { logout } from "@/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/redux/hook";
 import { User } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const UserMenu = () => {
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -22,7 +28,10 @@ const UserMenu = () => {
           >
             Dashboard
           </Link>
-          <button className="hover:bg-red-600 px-2 py-1 rounded-md text-left transition">
+          <button
+            onClick={handleLogout}
+            className="hover:bg-red-600 px-2 py-1 rounded-md text-left transition"
+          >
             Logout
           </button>
         </div>
