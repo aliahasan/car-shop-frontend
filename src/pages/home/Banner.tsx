@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <section className="w-full bg-black text-white py-6 overflow-hidden">
+    <section className="w-full text-white py-6 overflow-hidden">
       <div className=" md:px-8 flex flex-col md:flex-row items-center justify-between gap-2">
         {/* Left Side - Text Content */}
         <motion.div

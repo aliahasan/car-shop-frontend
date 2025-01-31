@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AlertCircle } from "lucide-react"; // Import an icon from lucide-react
 
-const Error = ({ errorMessage }) => {
+const Error = ({ errorMessage }: any) => {
   return (
     <div className="flex flex-col items-center justify-center  p-4 overflow-hidden">
       <div className="text-center max-w-md">

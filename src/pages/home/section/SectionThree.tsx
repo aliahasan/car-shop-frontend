@@ -21,7 +21,7 @@ const SectionThree = () => {
   }, []);
 
   return (
-    <section className="py-12 lg:py-20">
+    <section className="py-6 lg:py-16">
       <div className="text-center pb-10">
         <SectionTitle
           title="Testimonials"

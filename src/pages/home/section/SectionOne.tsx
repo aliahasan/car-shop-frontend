@@ -3,7 +3,7 @@ import SectionTitle from "@/shared/SectionTitle";
 
 const SectionOne = () => {
   return (
-    <section className="pt-20 lg:py-20">
+    <section className="py-6 lg:py-16">
       <div className="flex flex-col space-y-8 lg:space-y-0 lg:flex-row lg:space-x-10">
         <div>
           <figure>

@@ -1,4 +1,5 @@
 import { baseApi } from "@/redux/api/baseApi";
+import { TQueryParam } from "@/types";
 
 const carApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -6,7 +7,7 @@ const carApi = baseApi.injectEndpoints({
       query: (args) => {
         const params = new URLSearchParams();
         if (args) {
-          args.forEach((item) => {
+          args.forEach((item: TQueryParam) => {
             if (item.value) {
               params.append(item.name, item.value as string);
             }
@@ -18,6 +19,7 @@ const carApi = baseApi.injectEndpoints({
           params: params,
         };
       },
+      providesTags: ["cars"],
     }),
   }),
 });
