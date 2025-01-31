@@ -1,5 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import CarCard from "@/pages/CarCard";
+import CarCard from "@/pages/allProducts/CarCard";
 import { useGetAllCarsQuery } from "@/redux/features/car/carApi";
 import SectionTitle from "@/shared/SectionTitle";
 import { TCar } from "@/types";
