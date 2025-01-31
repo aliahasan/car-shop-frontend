@@ -3,7 +3,7 @@ import About from "@/pages/About";
 import AllProducts from "@/pages/AllProducts";
 import Contact from "@/pages/Contact";
 import ErrorPage from "@/pages/error/ErrorPage";
-import Home from "@/pages/Home";
+import Home from "@/pages/home/Home";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import Services from "@/pages/Services";

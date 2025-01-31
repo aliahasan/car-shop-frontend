@@ -67,6 +67,9 @@ const Login = () => {
               required
             />
           </div>
+          {/* <div className="mt-4 space-y-2 text-my-text_clr">
+            <RHSelect name="name" options={[]} />
+          </div> */}
 
           {/* Submit Button */}
           <div className="mt-6">

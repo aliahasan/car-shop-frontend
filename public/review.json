@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Aisha Khan",
+    "review": "I absolutely love my new Stellar X700!  The interior is spacious and the infotainment system is very user-friendly. Highly recommend!",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "name": "Omar Hassan",
+    "review": "The Apex Sport GT is a beast! The performance is incredible, and the handling is so precise. It's a thrill to drive. The only downside is ",
+    "rating": 4,
+    "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "name": "Fatima Rahman",
+    "review": "The Terra Cruiser SUV is perfect for our family. It has plenty of space for everyone and all our gear. It's also very capable off-road,",
+    "rating": 4.5,
+    "image": "https://static.vecteezy.com/system/resources/previews/010/359/290/non_2x/headshot-of-young-lovely-woman-keeps-hands-on-neck-has-european-appearance-happy-to-hear-pleasant-words-wears-casual-sweater-isolated-over-blue-background-human-face-expressions-concept-free-photo.JPG"
+  },
+  {
+    "name": "Ali Ahmed",
+    "review": "The Evo City Hatch is a great little car. It's perfect for navigating the city streets and it's very fuel-efficient. Highly recommended",
+    "rating": 4,
+    "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  {
+    "name": "Sara Khan",
+    "review": "The Luxury Glide Sedan is the most comfortable car I've ever owned. The ride is so smooth and the interior is luxurious. Highly recommend",
+    "rating": 5,
+    "image": "https://static.vecteezy.com/system/resources/previews/010/359/290/non_2x/headshot-of-young-lovely-woman-keeps-hands-on-neck-has-european-appearance-happy-to-hear-pleasant-words-wears-casual-sweater-isolated-over-blue-background-human-face-expressions-concept-free-photo.JPG"
+  },
+  {
+    "name": "Yusuf Hossain",
+    "review": "It's a great electric car with a long range. It's also very affordable to run.I highly recommend it to anyone considering an electric car.",
+    "rating": 4.5,
+    "image": "ttps://images.unsplash.com/photo-1535713875002-d1d0cf377fde?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+  }
+]

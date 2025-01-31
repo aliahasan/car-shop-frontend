@@ -11,21 +11,25 @@ type Option = {
   label: string;
 };
 
-type RHMultiSelectProps = {
+type RHSelectProps = {
   name: string;
   label?: string;
   disabled?: boolean;
+  placement?: string;
   options: Option[];
   placeholder?: string;
+  isMulti?: boolean;
 };
 
-const RHMultiSelect = ({
+const RHSelect = ({
   name,
   label,
   disabled,
   options,
   placeholder,
-}: RHMultiSelectProps) => {
+  placement,
+  isMulti,
+}: RHSelectProps) => {
   return (
     <FormField
       name={name}
@@ -34,14 +38,14 @@ const RHMultiSelect = ({
           {label && <FormLabel className="text-my-text_clr">{label}</FormLabel>}
           <FormControl>
             <Select
-              isMulti
+              isMulti={isMulti}
               name={name}
               options={options}
               placeholder={placeholder || "Select options"}
               isDisabled={disabled}
               value={field.value}
               onChange={(selectedOption) => field.onChange(selectedOption)}
-              menuPlacement="top"
+              menuPlacement={placement ? "top" : "bottom"}
             />
           </FormControl>
         </FormItem>
@@ -50,4 +54,4 @@ const RHMultiSelect = ({
   );
 };
 
-export default RHMultiSelect;
+export default RHSelect;

@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black sticky top-0 left-0 border-b border-gray-700">
+    <nav className=" sticky backdrop-blur-md top-0 left-0 border-b border-gray-700 z-50">
       <div className="container mx-auto px-1 md:px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/">
@@ -50,7 +50,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center">
             {user && <UserMenu />}
 
             <button
