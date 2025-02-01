@@ -4,15 +4,23 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { logout } from "@/redux/features/auth/authSlice";
+import { clearCart } from "@/redux/features/cart/CartSlice";
 import { useAppDispatch } from "@/redux/hook";
+import Cookies from "js-cookie";
 import { User } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserMenu = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
   const handleLogout = () => {
+    Cookies.remove("token");
     dispatch(logout());
+    dispatch(clearCart());
+    navigate("/login");
   };
+
   return (
     <Popover>
       <PopoverTrigger asChild>

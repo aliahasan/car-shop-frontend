@@ -5,10 +5,26 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import { addToCart } from "@/redux/features/cart/CartSlice";
+import { useAppDispatch } from "@/redux/hook";
 import { CarCardProps } from "@/types";
 import { Link } from "react-router-dom";
 
 const CarCard = ({ car }: CarCardProps) => {
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = (id: string) => {
+    const cartData = {
+      car: id,
+      name: car.name,
+      price: car.price,
+      quantity: 1,
+      image: car?.images?.[0] ?? "",
+      stock: car.quantity,
+    };
+    dispatch(addToCart(cartData));
+  };
+
   return (
     <Card
       className="bg-[#0a0a0a] text-white shadow-lg rounded-xl overflow-hidden 
@@ -16,7 +32,7 @@ const CarCard = ({ car }: CarCardProps) => {
     >
       <CardHeader className="p-0 relative">
         <img
-          src={car?.images[0]}
+          src={car?.images?.[0] ?? ""}
           alt={car?.name}
           className="w-full h-60 object-cover transition-transform duration-300 hover:scale-110"
         />
@@ -42,13 +58,21 @@ const CarCard = ({ car }: CarCardProps) => {
         </div>
       </CardContent>
 
-      {/* View Details Button */}
+      {/* View Details and Add to Cart Buttons */}
       <CardFooter className="p-6 pt-0">
-        <Link to={`/car/${car?._id}`} className="w-full">
-          <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors duration-300">
-            View Details
-          </Button>
-        </Link>
+        <div className="flex gap-4 w-full">
+          <Link to={`/car/${car?._id}`} className="w-full">
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors duration-300">
+              View Details
+            </Button>
+          </Link>
+          <button
+            onClick={() => handleAddToCart(car._id)}
+            className="w-full bg-white  text-gray-500 font-semibold py-1 rounded-lg transition-colors duration-300"
+          >
+            Add to Cart
+          </button>
+        </div>
       </CardFooter>
     </Card>
   );

@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/app-logo.png";
+import CartSheet from "./CartSheet";
 import UserMenu from "./UserMenu";
 
 const Navbar = () => {
@@ -20,16 +21,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" sticky backdrop-blur-md top-0 left-0 border-b border-gray-700 z-50">
+    <nav className="sticky backdrop-blur-md top-0 left-0 border-b border-gray-700 z-50">
       <div className="container mx-auto px-4 lg:px-0">
         <div className="flex justify-between items-center h-16">
           <Link to="/">
             <div className="flex-shrink-0 flex items-center">
               <img src={logo} alt="logo" className="w-20" />
-              <h1 className="text-white text-2xl font-bold">RideHaven</h1>
+              <h1 className="text-my-btn_clr text-2xl font-bold">RideHaven</h1>
             </div>
           </Link>
-
           <div className="hidden lg:flex lg:items-center lg:space-x-16">
             {navLinks.map((item) => (
               <NavLink
@@ -49,6 +49,9 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center">
+            {/* Replace ShoppingBag with CartSheet */}
+            <CartSheet />
+
             {user && <UserMenu />}
 
             <button
@@ -75,6 +78,7 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         <div
           className={`lg:hidden fixed top-0 left-0 h-screen w-64 bg-black shadow-md transform transition-transform duration-300 ease-in-out border-r border-gray-700 ${
             isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"

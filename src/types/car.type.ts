@@ -32,7 +32,7 @@ export interface CarCardProps {
     engineCapacity: number;
     features: string[];
     fuelType: string;
-    images: string[];
+    images?: string[];
     isStock: boolean;
     mileage: number;
     model: string;

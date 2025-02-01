@@ -17,7 +17,7 @@ const About = () => {
   };
 
   return (
-    <div className="">
+    <div>
       {/* Hero Section */}
       <section>
         <div className="relative h-64 lg:h-[70vh]">
@@ -28,7 +28,7 @@ const About = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           <motion.div
-            className="absolute bottom-8 lg:bottom-32 left-[5rem] text-white"
+            className="absolute bottom-8 lg:bottom-32 left-4 lg:left-[5rem] text-white"
             initial="hidden"
             animate="visible"
             variants={fadeInUp}

@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom";
 const CarDetails = () => {
   const { id } = useParams();
   const { data: carData } = useGetCarByIdQuery(id);
-
   const car = carData?.data;
+
   if (!car) return <div>Car not found</div>;
 
   return (
@@ -131,11 +131,14 @@ const CarDetails = () => {
               </div>
             </div>
 
-            {/* Buy Now Button */}
-            <div className="flex justify-end">
+            {/* Buy Now and Add to Cart Buttons */}
+            <div className="flex  gap-4">
               <Button className="bg-blue-600 hover:bg-blue-700 transition-colors duration-300">
                 Buy Now
               </Button>
+              <button className="bg-white px-3  text-gray-500 font-semibold py-1 rounded-lg transition-colors duration-300">
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>
