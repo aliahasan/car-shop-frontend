@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.png";
+import logo from "../../assets/app-logo.png";
 const Footer = () => {
   return (
     <footer className="px-4 divide-y bg-[#18120B] text-white mt-16">

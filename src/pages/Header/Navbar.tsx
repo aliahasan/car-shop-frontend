@@ -3,17 +3,15 @@ import { useAppSelector } from "@/redux/hook";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/app-logo.png";
 import UserMenu from "./UserMenu";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "All Products", href: "/all-products" },
-    { label: "Services", href: "/services" },
+    { label: "Cars", href: "/all-products" },
     { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
   ];
   const user = useAppSelector(selectedUser);
 

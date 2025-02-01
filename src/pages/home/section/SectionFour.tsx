@@ -39,7 +39,7 @@ const SectionFour = () => {
                   </h2>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="pt-6 grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {cars?.data?.slice(0, 4)?.map((car: TCar) => (
                     <CarCard key={car._id} car={car} />
                   ))}
