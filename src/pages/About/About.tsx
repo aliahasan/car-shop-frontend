@@ -106,9 +106,7 @@ const About = () => {
               alt={`Team Member`}
               className="w-full h-64 object-cover rounded-lg shadow-lg"
             />
-            <h3 className="text-xl text-my-btn_clr font-semibold mt-4">
-              John Doe
-            </h3>
+            <h3 className="text-xl text-white font-semibold mt-4">John Doe</h3>
             <p className="text-my-text_clr">CEO & Co-Founder</p>
           </motion.div>
           <motion.div className="text-center" variants={fadeInUp}>
@@ -117,7 +115,7 @@ const About = () => {
               alt={`Team Member`}
               className="w-full h-64 object-cover rounded-lg shadow-lg"
             />
-            <h3 className="text-xl text-my-btn_clr font-semibold mt-4">
+            <h3 className="text-xl text-white font-semibold mt-4">
               John Smith
             </h3>
             <p className="text-my-text_clr">COO</p>
@@ -128,7 +126,7 @@ const About = () => {
               alt={`Team Member`}
               className="w-full h-64 object-cover rounded-lg shadow-lg"
             />
-            <h3 className="text-xl text-my-btn_clr font-semibold mt-4">
+            <h3 className="text-xl text-white font-semibold mt-4">
               David Hussy
             </h3>
             <p className="text-my-text_clr">Fleet Manager</p>

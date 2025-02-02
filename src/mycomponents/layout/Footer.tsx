@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex items-center justify-center  w-24 rounded-full dark:bg-violet-600">
               <img src={logo} alt="RideHaven Logo" className="full" />
             </div>
-            <span className="self-center text-2xl font-semibold">
+            <span className="self-center text-my-btn_clr text-2xl font-semibold">
               RideHaven
             </span>
           </a>

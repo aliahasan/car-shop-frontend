@@ -1,6 +1,6 @@
 const AdminDashBoard = () => {
   return (
-    <div>
+    <div className="text-white">
       <h1>This is Admin | Dashboard</h1>
     </div>
   );

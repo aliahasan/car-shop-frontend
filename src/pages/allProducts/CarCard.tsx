@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -62,13 +61,13 @@ const CarCard = ({ car }: CarCardProps) => {
       <CardFooter className="p-6 pt-0">
         <div className="flex gap-4 w-full">
           <Link to={`/car/${car?._id}`} className="w-full">
-            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors duration-300">
+            <button className="w-full bg-my-btn_clr  text-white font-semibold py-2 rounded-lg ">
               View Details
-            </Button>
+            </button>
           </Link>
           <button
             onClick={() => handleAddToCart(car._id)}
-            className="w-full bg-white  text-gray-500 font-semibold py-1 rounded-lg transition-colors duration-300"
+            className="w-full bg-white  text-gray-500 font-semibold py-1 rounded-lg"
           >
             Add to Cart
           </button>

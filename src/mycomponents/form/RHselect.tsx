@@ -15,10 +15,10 @@ type RHSelectProps = {
   name: string;
   label?: string;
   disabled?: boolean;
-  placement?: string;
   options: Option[];
   placeholder?: string;
   isMulti?: boolean;
+  required?: boolean;
 };
 
 const RHSelect = ({
@@ -27,25 +27,36 @@ const RHSelect = ({
   disabled,
   options,
   placeholder,
-  placement,
   isMulti,
+  required,
 }: RHSelectProps) => {
   return (
     <FormField
       name={name}
       render={({ field }) => (
         <FormItem>
-          {label && <FormLabel className="text-my-text_clr">{label}</FormLabel>}
+          {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
             <Select
+              className="text-black"
               isMulti={isMulti}
+              required={required}
               name={name}
               options={options}
               placeholder={placeholder || "Select options"}
               isDisabled={disabled}
-              value={field.value}
-              onChange={(selectedOption) => field.onChange(selectedOption)}
-              menuPlacement={placement ? "top" : "bottom"}
+              value={options.filter((opt) =>
+                isMulti
+                  ? field.value?.includes(opt.value)
+                  : field.value === opt.value
+              )}
+              onChange={(selected) =>
+                field.onChange(
+                  isMulti
+                    ? (selected as Option[])?.map((opt) => opt.value)
+                    : (selected as Option)?.value
+                )
+              }
             />
           </FormControl>
         </FormItem>

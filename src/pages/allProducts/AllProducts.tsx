@@ -15,7 +15,13 @@ const AllProducts = () => {
     { name: "sortOrder", value: "" },
   ]);
 
-  const { data: cars, isError, isLoading } = useGetAllCarsQuery(filters);
+  const {
+    data: cars,
+    isError,
+    isLoading,
+  } = useGetAllCarsQuery(filters, {
+    refetchOnMountOrArgChange: true,
+  });
 
   if (isLoading) {
     return (

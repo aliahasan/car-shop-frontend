@@ -13,6 +13,7 @@ type TInputProps = {
   placeholder?: string;
   disabled?: boolean;
   required?: boolean;
+  multiple?: boolean;
 };
 
 const RHInput = ({
@@ -22,6 +23,7 @@ const RHInput = ({
   placeholder,
   disabled,
   required,
+  multiple,
 }: TInputProps) => {
   return (
     <FormField
@@ -37,8 +39,9 @@ const RHInput = ({
               disabled={disabled}
               required={required}
               placeholder={placeholder}
+              multiple={multiple}
               className="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500 
-             text-sm md:text-base lg:text-lg transition-all duration-300"
+              text-sm md:text-base lg:text-lg transition-all duration-300"
             />
           </FormControl>
         </FormItem>

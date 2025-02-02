@@ -4,6 +4,7 @@ import About from "@/pages/About/About";
 import AddCar from "@/pages/admin/AddCar";
 import AllCars from "@/pages/admin/AllCars";
 import AllOrder from "@/pages/admin/AllOrder";
+import AllUsers from "@/pages/admin/AllUsers";
 import AllProducts from "@/pages/allProducts/AllProducts";
 import CarDetails from "@/pages/allProducts/CarDetails";
 import ErrorPage from "@/pages/error/ErrorPage";
@@ -33,11 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/car/:id",
-        element: (
-          <PrivateRoute>
-            <CarDetails />,
-          </PrivateRoute>
-        ),
+        element: <CarDetails />,
       },
       {
         path: "/order/verify",
@@ -82,6 +79,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AllCars />,
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "all-users",
+        element: (
+          <PrivateRoute>
+            <AllUsers />,
           </PrivateRoute>
         ),
       },

@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import { Car, ClipboardList, PlusCircle, Users } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
@@ -23,20 +22,24 @@ const AdminMenu = () => {
   ];
 
   return (
-    <Card className="p-4 w-full max-w-xs">
-      <nav className="flex flex-col space-y-2">
-        {links.map((link, index) => (
-          <NavLink
-            key={index}
-            to={link.href}
-            className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 transition"
-          >
-            {link.icon}
-            <span>{link.label}</span>
-          </NavLink>
-        ))}
-      </nav>
-    </Card>
+    <nav className="flex flex-col space-y-2 ">
+      {links.map((link, index) => (
+        <NavLink
+          key={index}
+          to={link.href}
+          className={({ isActive }) =>
+            `flex items-center space-x-3 p-3 rounded-lg transition-all duration-200 ${
+              isActive
+                ? "bg-my-btn_clr text-white shadow-lg"
+                : "text-my-text_clr bg-[#292524]"
+            }`
+          }
+        >
+          {link.icon}
+          <span className="font-medium">{link.label}</span>
+        </NavLink>
+      ))}
+    </nav>
   );
 };
 

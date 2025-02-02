@@ -16,7 +16,7 @@ const Overview = () => {
     navigate("/login");
   }
   return (
-    <div>
+    <div className="p-4">
       <>
         {role && role === "admin" && <AdminDashBoard />}
         {role && role === "user" && <UserDashboard />}

@@ -3,6 +3,7 @@ import RHForm from "@/mycomponents/form/RHForm";
 import RHInput from "@/mycomponents/form/RHInput";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { setUser } from "@/redux/features/auth/authSlice";
+import { clearCart } from "@/redux/features/cart/CartSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { verifyToken } from "@/utils/verifyToken";
 import { FieldValues, SubmitHandler } from "react-hook-form";
@@ -24,6 +25,7 @@ const Login = () => {
         return;
       }
       toast.success("Login success", { id: toastId });
+      dispatch(clearCart());
       dispatch(setUser({ user: user, token: res.data }));
       navigate("/");
     } catch (error: any) {

@@ -69,7 +69,7 @@ const Navbar = () => {
               {!user && (
                 <NavLink
                   to="/login"
-                  className="text-md pb-2 py-1 px-6 rounded-full bg-my-btn_clr font-medium text-white"
+                  className="text-md pb-2 py-1 lg:mr-4 px-6 rounded-full bg-my-btn_clr font-medium text-white"
                 >
                   Login
                 </NavLink>

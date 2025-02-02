@@ -51,7 +51,7 @@ export default {
           5: "hsl(var(--chart-5))",
         },
         my: {
-          btn_clr: "#4F46E5",
+          btn_clr: "#3B82F6",
           text_clr: "#CECECE",
         },
       },
