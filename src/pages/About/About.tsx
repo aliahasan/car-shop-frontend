@@ -43,7 +43,7 @@ const About = () => {
 
       {/* Founding History Section */}
       <motion.section
-        className="py-4 lg:py-12 px-4 lg:px-32"
+        className="py-4 lg:py-12  lg:px-32"
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
@@ -85,7 +85,7 @@ const About = () => {
 
       {/* Team Section */}
       <motion.section
-        className="py-16 px-4 lg:px-32 bg-[#18120B]"
+        className="py-16  lg:px-32 bg-[#18120B]"
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
@@ -136,7 +136,7 @@ const About = () => {
 
       {/* Our Fleet Section */}
       <motion.section
-        className="py-16 px-4 lg:px-32"
+        className="py-16  lg:px-32"
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
@@ -176,7 +176,7 @@ const About = () => {
 
       {/* Values & Commitment Section */}
       <motion.section
-        className="py-16 px-4 lg:px-32 bg-[#18120B]"
+        className="py-16  lg:px-32 bg-[#18120B]"
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
@@ -217,7 +217,7 @@ const About = () => {
       {/* Contact Us Section */}
       <div className="bg-[#18120B] border-t">
         <motion.section
-          className="py-16 px-4 lg:px-32"
+          className="py-16  lg:px-32"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}

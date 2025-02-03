@@ -1,4 +1,5 @@
-export interface OrderData {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export interface IOrderVerify {
   id: number;
   order_id: string;
   currency: string;
@@ -31,3 +32,37 @@ export interface OrderData {
   method: string;
   date_time: string;
 }
+
+export type TOrderType = {
+  cars: {
+    car: {
+      images: string[];
+      name: string;
+      _id: string;
+    };
+    quantity: number;
+    _id: string;
+  }[];
+  createdAt: string;
+  deliveryStatus: string;
+  orderStatus: string;
+  paymentStatus: string;
+  totalPrice: number;
+  transaction: {
+    bank_status: string;
+    date_time: string;
+    id: string;
+    method: string;
+    sp_code: string;
+    sp_message: string;
+    transactionStatus: any;
+  };
+  updatedAt: string;
+  user: {
+    email: string;
+    name: string;
+    _id: string;
+  };
+  __v: number;
+  _id: string;
+};

@@ -97,10 +97,12 @@ const CarDetails = () => {
                 <span className="text-sm text-my-text_clr">Fuel Type</span>
                 <p className="font-semibold">{car?.fuelType}</p>
               </div>
+
               <div>
                 <span className="text-sm text-my-text_clr">Mileage</span>
                 <p className="font-semibold">{car?.mileage} MPG</p>
               </div>
+
               <div>
                 <span className="text-sm text-my-text_clr">Transmission</span>
                 <p className="font-semibold">{car?.transmission}</p>
@@ -110,6 +112,10 @@ const CarDetails = () => {
                   Seating Capacity
                 </span>
                 <p className="font-semibold">{car?.seatingCapacity}</p>
+              </div>
+              <div>
+                <span className="text-sm text-my-text_clr">Release year</span>
+                <p className="font-semibold">{car?.year}</p>
               </div>
               <div>
                 <span className="text-sm text-my-text_clr">Warranty</span>

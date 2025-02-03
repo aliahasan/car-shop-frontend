@@ -2,11 +2,14 @@ import AdminMenu from "@/pages/admin/AdminMenu";
 import UserMenu from "@/pages/user/UserMenu";
 import { selectedUser } from "@/redux/features/auth/authSlice";
 import { useAppSelector } from "@/redux/hook";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const user = useAppSelector(selectedUser);
-  const role = user?.role;
+
+  // Memoize role to prevent unnecessary re-renders
+  const role = useMemo(() => user?.role, [user]);
 
   return (
     <div className="h-screen flex flex-col bg-[#0C0A09] text-white border-r border-gray-700">
@@ -23,8 +26,6 @@ const Sidebar = () => {
           {role === "admin" ? <AdminMenu /> : <UserMenu />}
         </nav>
       </div>
-
-      {/* Footer */}
     </div>
   );
 };

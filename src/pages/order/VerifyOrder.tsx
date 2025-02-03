@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { clearCart } from "@/redux/features/cart/CartSlice";
 import { useVerifyOrderQuery } from "@/redux/features/oreder/orderApi";
 import { useAppDispatch } from "@/redux/hook";
-import { OrderData } from "@/types";
+import { IOrderVerify } from "@/types";
+
 import { Link, useSearchParams } from "react-router-dom";
 
 const VerifyOrder = () => {
@@ -12,7 +13,7 @@ const VerifyOrder = () => {
   const { data, isLoading } = useVerifyOrderQuery(params, {
     refetchOnMountOrArgChange: true,
   });
-  const orderData: OrderData = data?.data?.[0];
+  const orderData: IOrderVerify = data?.data?.[0];
 
   if (isLoading) {
     return (

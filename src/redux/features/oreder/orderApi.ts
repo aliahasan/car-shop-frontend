@@ -8,6 +8,7 @@ const orderApi = baseApi.injectEndpoints({
         method: "POST",
         body: orderInfo,
       }),
+      invalidatesTags: ["orders"],
     }),
     verifyOrder: builder.query({
       query: (order_id) => ({

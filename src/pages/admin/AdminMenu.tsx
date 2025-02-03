@@ -10,14 +10,14 @@ const AdminMenu = () => {
     },
     { label: "All Cars", href: "/dashboard/all-cars", icon: <Car size={20} /> },
     {
-      label: "All Users",
-      href: "/dashboard/all-users",
-      icon: <Users size={20} />,
-    },
-    {
       label: "All Orders",
       href: "/dashboard/all-orders",
       icon: <ClipboardList size={20} />,
+    },
+    {
+      label: "All Users",
+      href: "/dashboard/all-users",
+      icon: <Users size={20} />,
     },
   ];
 

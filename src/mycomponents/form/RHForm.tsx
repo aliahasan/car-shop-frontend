@@ -11,7 +11,7 @@ const RHForm = ({ onSubmit, children }: TFormProps) => {
   const form = useForm();
 
   return (
-    <Form {...form}>
+    <Form {...form} control={form.control}>
       <form onSubmit={form.handleSubmit(onSubmit)}>{children}</form>
     </Form>
   );

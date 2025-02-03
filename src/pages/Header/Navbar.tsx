@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky backdrop-blur-md top-0 left-0 border-b border-gray-700 z-50">
-      <div className="container mx-auto px-4 lg:px-0">
+      <div className=" max-w-screen-2xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/">
             <div className="flex-shrink-0 flex items-center">
@@ -56,7 +56,7 @@ const Navbar = () => {
 
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden text-md pb-2 py-2 px-4 font-medium text-white"
+              className="lg:hidden text-md pb-2 py-2 pl-1 lg:px-2 font-medium text-white"
             >
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
