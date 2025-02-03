@@ -2,24 +2,26 @@
 import RHForm from "@/mycomponents/form/RHForm";
 import RHInput from "@/mycomponents/form/RHInput";
 import { useChangePasswordMutation } from "@/redux/features/auth/authApi";
-import { selectedUser } from "@/redux/features/auth/authSlice";
-import { useAppSelector } from "@/redux/hook";
+import { logout, selectedUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
-import { FieldValues, SubmitHandler } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Setting = () => {
+  const { reset } = useForm();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const user = useAppSelector(selectedUser);
   const email = user?.email;
 
-  const [updatePassword] = useChangePasswordMutation();
-
+  const [updatePassword, { isLoading }] = useChangePasswordMutation();
   const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
-    // Check if newPassword and confirmPassword match
     if (data?.newPassword !== data?.confirmPassword) {
       return toast.error("Password not matched");
     }
@@ -34,7 +36,9 @@ const Setting = () => {
 
     try {
       const res = await updatePassword(newPasswordData).unwrap();
-      console.log(res);
+      reset();
+      dispatch(logout());
+      navigate("/login");
       if (res?.success || res?.data?.success) {
         toast.success("Password updated successfully", { id });
       }
@@ -104,6 +108,7 @@ const Setting = () => {
 
         {/* Submit Button */}
         <button
+          disabled={isLoading}
           type="submit"
           className="w-full py-2 bg-my-btn_clr text-white font-semibold rounded-md"
         >

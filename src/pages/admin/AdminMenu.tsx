@@ -1,6 +1,7 @@
 import {
   Car,
   ClipboardList,
+  Home,
   PlusCircle,
   Settings,
   User,
@@ -10,6 +11,11 @@ import { NavLink } from "react-router-dom";
 
 const AdminMenu = () => {
   const links = [
+    {
+      label: "Home",
+      href: "/",
+      icon: <Home size={20} />,
+    },
     {
       label: "Add Car",
       href: "/dashboard/add-car",

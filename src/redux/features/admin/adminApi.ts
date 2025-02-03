@@ -43,14 +43,14 @@ const adminApi = baseApi.injectEndpoints({
 
     getAllUsers: builder.query({
       query: () => ({
-        url: "/admin/get-all-users",
+        url: "/admin/all-users",
         method: "GET",
       }),
       providesTags: ["users"],
     }),
     blockUser: builder.mutation({
-      query: (payload) => ({
-        url: "/admin-change-status",
+      query: ({ userId, ...payload }) => ({
+        url: `/admin/change-status/${userId}`,
         method: "PATCH",
         body: payload,
       }),

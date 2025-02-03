@@ -7,7 +7,7 @@ const Footer = () => {
           <a
             rel="noopener noreferrer"
             href="#"
-            className="flex justify-center space-x-3 lg:justify-start"
+            className="flex justify-center space-x-3  lg:justify-start"
           >
             <div className="flex items-center justify-center  w-24 rounded-full dark:bg-violet-600">
               <img src={logo} alt="RideHaven Logo" className="full" />

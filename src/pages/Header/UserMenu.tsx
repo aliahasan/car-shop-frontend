@@ -15,6 +15,8 @@ const UserMenu = () => {
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
+    console.log("Token before logout:", Cookies.get("token"));
+
     Cookies.remove("token");
     dispatch(logout());
     dispatch(clearCart());
