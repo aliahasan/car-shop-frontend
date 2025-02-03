@@ -1,17 +1,35 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
+import { useDeleteCarMutation } from "@/redux/features/admin/adminApi";
 import { useGetAllCarsQuery } from "@/redux/features/car/carApi";
 import { Plus } from "lucide-react";
+import toast from "react-hot-toast";
 import CarsTable from "./CarsTable";
 
 const AllCars = () => {
   const { data: carsData, isLoading } = useGetAllCarsQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
+
+  const [deleteCar] = useDeleteCarMutation();
   const cars = carsData?.data || [];
 
-  const handleDelete = (carId: string) => {
-    console.log("Delete car:", carId);
-    // Add your delete logic here
+  const handleDelete = async (carId: string) => {
+    const toastId = toast.loading("Car is deleting....");
+    try {
+      const res = await deleteCar(carId).unwrap();
+      console.log(res);
+      if (res.success || res?.data?.success) {
+        toast.success("Car deleted successfully", { id: toastId });
+      }
+    } catch (error: any) {
+      if (error.data && error.data.message) {
+        const errorMessage = error.data.message || "Failed to delete car";
+        toast.error(errorMessage, { id: toastId });
+      } else {
+        toast.error("Failed to delete car", { id: toastId });
+      }
+    }
   };
 
   if (isLoading) {

@@ -52,6 +52,7 @@ const UpdateCarDialog = ({ car, closeModal }: UpdateCarDialogProps) => {
         ...updatedData,
         carId: car._id,
       }).unwrap();
+      console.log(response);
       if (response.success || response?.data?.success) {
         toast.success("Car updated successfully", { id: toastId });
         closeModal();
@@ -76,7 +77,7 @@ const UpdateCarDialog = ({ car, closeModal }: UpdateCarDialogProps) => {
       </DialogHeader>
 
       <RHForm onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <RHInput
             type="text"
             name="name"

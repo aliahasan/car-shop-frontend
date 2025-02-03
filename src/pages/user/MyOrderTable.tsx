@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Badge } from "@/components/ui/badge"; // Import Badge component
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -9,49 +8,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useUpdateOrderStatusMutation } from "@/redux/features/admin/adminApi";
-import { TOrderType } from "@/types";
-import toast from "react-hot-toast";
+import { TMyOrderType } from "@/types";
 
 interface OrderTableProps {
-  orders: TOrderType[];
+  orders: TMyOrderType[];
+  onCancel: (orderId: string) => void;
 }
 
-const OrdersTable = ({ orders }: OrderTableProps) => {
-  const [updateOrder] = useUpdateOrderStatusMutation();
-
-  const handleUpdate = async (orderId: string) => {
-    const toastId = "update";
-    try {
-      const updateOrderPayload = {
-        orderStatus: "accepted",
-        orderId: orderId,
-      };
-      const res = await updateOrder(updateOrderPayload).unwrap();
-      if (res?.success || res?.data?.success) {
-        toast.success("Order updated successfully", { id: toastId });
-      } else {
-        toast.error("Failed to update order status", { id: toastId });
-      }
-    } catch (error: any) {
-      if (error.data && error.data.message) {
-        const errorMessage = error.data.message || "Failed updateStatus";
-        toast.error(errorMessage, { id: toastId });
-      } else {
-        toast.error("Failed to update status", { id: toastId });
-      }
-    }
-  };
-
+const MyOrderTable = ({ orders, onCancel }: OrderTableProps) => {
   return (
     <Table className="w-full text-white">
       <TableHeader>
         <TableRow>
-          <TableHead>Customer Name</TableHead>
-          <TableHead>Customer Email</TableHead>
-          <TableHead>Quantity</TableHead>
+          <TableHead>Car Name</TableHead>
           <TableHead>Total Price</TableHead>
-          <TableHead>Transaction Id</TableHead>
           <TableHead>Payment Status</TableHead>
           <TableHead>Order Status</TableHead>
           <TableHead>Actions</TableHead>
@@ -61,14 +31,16 @@ const OrdersTable = ({ orders }: OrderTableProps) => {
         {orders?.map((order) => (
           <TableRow key={order._id}>
             <TableCell>
-              <h1>{order?.user?.name}</h1>
+              {order.cars.map((car) => (
+                <div key={car?.car._id}>
+                  <p>{car?.car.name}</p>
+                  <p className="text-sm text-gray-400">
+                    Quantity: {car?.quantity}
+                  </p>
+                </div>
+              ))}
             </TableCell>
-            <TableCell>{order.user.email}</TableCell>
-            <TableCell>
-              {order.cars?.reduce((total, car) => total + car.quantity, 0)}
-            </TableCell>
-            <TableCell>${order?.totalPrice}</TableCell>
-            <TableCell>${order?.transaction?.id}</TableCell>
+            <TableCell>${order.totalPrice.toFixed(2)}</TableCell>
             <TableCell>
               <Badge
                 className={`px-4 py-1 text-md rounded-md text-white ${
@@ -89,7 +61,7 @@ const OrdersTable = ({ orders }: OrderTableProps) => {
             <TableCell>
               <Badge
                 className={`px-4 py-2 rounded-md text-white ${
-                  order.orderStatus === "reject"
+                  order.orderStatus === "rejected"
                     ? "bg-red-500"
                     : order.orderStatus === "accepted"
                     ? "bg-green-500"
@@ -109,9 +81,9 @@ const OrdersTable = ({ orders }: OrderTableProps) => {
                   disabled={order.orderStatus === "accepted"}
                   className="bg-my-btn_clr"
                   size="default"
-                  onClick={() => handleUpdate(order._id)}
+                  onClick={() => onCancel(order._id)}
                 >
-                  Accept
+                  Cancel
                 </Button>
               </div>
             </TableCell>
@@ -122,4 +94,4 @@ const OrdersTable = ({ orders }: OrderTableProps) => {
   );
 };
 
-export default OrdersTable;
+export default MyOrderTable;

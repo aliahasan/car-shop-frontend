@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IOrderVerify {
   id: number;
@@ -65,4 +67,35 @@ export type TOrderType = {
   };
   __v: number;
   _id: string;
+};
+
+export type TMyOrderType = {
+  _id: string;
+  createdAt: string;
+  deliveryStatus: string;
+  email: string;
+  orderStatus: string;
+  paymentStatus: string;
+  totalPrice: number;
+  transaction: {
+    bank_status: string;
+    date_time: string;
+    id: string;
+    method: string;
+    sp_code: string;
+    sp_message: string;
+    transactionStatus: string | null;
+  };
+  updatedAt: string;
+  user: string;
+  __v: number;
+  cars: {
+    quantity: ReactNode;
+    car: {
+      images: string[];
+      name: string;
+      _id: string;
+      quantity: number;
+    };
+  }[];
 };

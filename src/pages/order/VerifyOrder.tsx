@@ -160,7 +160,7 @@ const VerifyOrder = () => {
           <p className="text-sm text-gray-600">
             If you have any questions, please contact our support team.
           </p>
-          <Link to="/dashboard">
+          <Link to="/dashboard/my-orders">
             <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
               View Order
             </Button>

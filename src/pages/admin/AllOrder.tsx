@@ -6,7 +6,6 @@ const AllOrder = () => {
     refetchOnMountOrArgChange: true,
   });
   const orders = OrdersData?.data || [];
-  console.log(orders);
   if (isLoading) {
     return <div>Loading...</div>;
   }
