@@ -14,6 +14,7 @@ import VerifyOrder from "@/pages/order/VerifyOrder";
 import Register from "@/pages/Register";
 import MyOrders from "@/pages/user/MyOrders";
 import Profile from "@/pages/user/Profile";
+import Setting from "@/pages/user/Setting";
 import Overview from "@/shared/Overview";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
@@ -111,6 +112,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "setting",
+        element: (
+          <PrivateRoute>
+            <Setting />
           </PrivateRoute>
         ),
       },

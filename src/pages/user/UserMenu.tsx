@@ -1,17 +1,22 @@
-import { ShoppingBag, User } from "lucide-react";
+import { Settings, ShoppingBag, User } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const UserMenu = () => {
   const links = [
+    {
+      label: "My Orders",
+      href: "/dashboard/my-orders",
+      icon: <ShoppingBag size={20} />,
+    },
     {
       label: "Profile",
       href: "/dashboard/my-profile",
       icon: <User size={20} />,
     },
     {
-      label: "My Orders",
-      href: "/dashboard/my-orders",
-      icon: <ShoppingBag size={20} />,
+      label: "Setting",
+      href: "/dashboard/setting",
+      icon: <Settings size={20} />,
     },
   ];
 

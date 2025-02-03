@@ -1,4 +1,11 @@
-import { Car, ClipboardList, PlusCircle, Users } from "lucide-react";
+import {
+  Car,
+  ClipboardList,
+  PlusCircle,
+  Settings,
+  User,
+  Users,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const AdminMenu = () => {
@@ -18,6 +25,16 @@ const AdminMenu = () => {
       label: "All Users",
       href: "/dashboard/all-users",
       icon: <Users size={20} />,
+    },
+    {
+      label: "Profile",
+      href: "/dashboard/my-profile",
+      icon: <User size={20} />,
+    },
+    {
+      label: "Setting",
+      href: "/dashboard/setting",
+      icon: <Settings size={20} />,
     },
   ];
 
