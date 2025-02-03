@@ -14,6 +14,7 @@ import {
   useUpdateMyselfMutation,
 } from "@/redux/features/user/userApi";
 import { useAppSelector } from "@/redux/hook";
+import PageTitle from "@/shared/PageTitle";
 import toast from "react-hot-toast";
 import { UpdateProfileDialog } from "./updateProfileDailog";
 
@@ -57,73 +58,88 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex justify-center items-center p-6 ">
-      <Card className="w-full max-w-3xl shadow-lg p-6">
-        <CardHeader className="flex flex-col items-center text-center">
-          <Avatar className="w-24 h-24">
-            <AvatarImage src="https://github.com/shadcn.png" alt="Profile" />
-            <AvatarFallback>{me?.name?.charAt(0) || "U"}</AvatarFallback>
-          </Avatar>
-          <CardTitle className="mt-4 text-2xl font-bold">
-            {me?.name || "User"}
-          </CardTitle>
-          <CardDescription className="text-gray-600">
-            {me?.email}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          {/* User Details */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label className="text-sm font-medium text-gray-700">Name</label>
-              <p className="text-gray-900 font-semibold">{me?.name || "N/A"}</p>
+    <>
+      <PageTitle title={`${user?.role as string} | Profile`} />
+      <div className="flex justify-center items-center p-6 ">
+        <Card className="w-full max-w-3xl shadow-lg p-6">
+          <CardHeader className="flex flex-col items-center text-center">
+            <Avatar className="w-24 h-24">
+              <AvatarImage src="https://github.com/shadcn.png" alt="Profile" />
+              <AvatarFallback>{me?.name?.charAt(0) || "U"}</AvatarFallback>
+            </Avatar>
+            <CardTitle className="mt-4 text-2xl font-bold">
+              {me?.name || "User"}
+            </CardTitle>
+            <CardDescription className="text-gray-600">
+              {me?.email}
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* User Details */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Name
+                </label>
+                <p className="text-gray-900 font-semibold">
+                  {me?.name || "N/A"}
+                </p>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  City
+                </label>
+                <p className="text-gray-900 font-semibold">
+                  {me?.city || "N/A"}
+                </p>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Address
+                </label>
+                <p className="text-gray-900 font-semibold">
+                  {me?.address || "N/A"}
+                </p>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Phone
+                </label>
+                <p className="text-gray-900 font-semibold">
+                  {me?.phone || "N/A"}
+                </p>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Role
+                </label>
+                <p className="text-gray-900 font-semibold">{me?.role}</p>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Account Created
+                </label>
+                <p className="text-gray-900 font-semibold">
+                  {new Date(me?.createdAt).toLocaleDateString()}
+                </p>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-gray-700">
+                  Last Updated
+                </label>
+                <p className="text-gray-900 font-semibold">
+                  {new Date(me?.updatedAt).toLocaleDateString()}
+                </p>
+              </div>
             </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700">City</label>
-              <p className="text-gray-900 font-semibold">{me?.city || "N/A"}</p>
+            {/* Update Button */}
+            <div className="flex justify-center mt-6">
+              <UpdateProfileDialog user={me} onSave={handleSave} />
             </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700">
-                Address
-              </label>
-              <p className="text-gray-900 font-semibold">
-                {me?.address || "N/A"}
-              </p>
-            </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700">Phone</label>
-              <p className="text-gray-900 font-semibold">
-                {me?.phone || "N/A"}
-              </p>
-            </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700">Role</label>
-              <p className="text-gray-900 font-semibold">{me?.role}</p>
-            </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700">
-                Account Created
-              </label>
-              <p className="text-gray-900 font-semibold">
-                {new Date(me?.createdAt).toLocaleDateString()}
-              </p>
-            </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700">
-                Last Updated
-              </label>
-              <p className="text-gray-900 font-semibold">
-                {new Date(me?.updatedAt).toLocaleDateString()}
-              </p>
-            </div>
-          </div>
-          {/* Update Button */}
-          <div className="flex justify-center mt-6">
-            <UpdateProfileDialog user={me} onSave={handleSave} />
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 };
 

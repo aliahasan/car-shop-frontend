@@ -1,3 +1,4 @@
+import PageTitle from "@/shared/PageTitle";
 import SectionTitle from "@/shared/SectionTitle";
 import { motion } from "framer-motion";
 
@@ -19,6 +20,7 @@ const About = () => {
   return (
     <div>
       {/* Hero Section */}
+      <PageTitle title="About" />
       <section>
         <div className="relative h-64 lg:h-[70vh]">
           <img

@@ -5,6 +5,7 @@ import {
   useGetMyAllOrdersQuery,
 } from "@/redux/features/user/userApi";
 import { useAppSelector } from "@/redux/hook";
+import PageTitle from "@/shared/PageTitle";
 import toast from "react-hot-toast";
 import MyOrderTable from "./MyOrderTable";
 
@@ -44,12 +45,15 @@ const MyOrders = () => {
   };
 
   return (
-    <div className="container mx-auto overflow-x-auto">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-white">My Orders</h1>
+    <>
+      <PageTitle title="User-orders" />
+      <div className="container mx-auto overflow-x-auto">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold text-white">My Orders</h1>
+        </div>
+        <MyOrderTable orders={orders} onCancel={handleCancelOrder} />
       </div>
-      <MyOrderTable orders={orders} onCancel={handleCancelOrder} />
-    </div>
+    </>
   );
 };
 

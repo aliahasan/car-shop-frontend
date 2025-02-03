@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import PageTitle from "@/shared/PageTitle";
 import {
   BarElement,
   CategoryScale,
@@ -54,60 +55,63 @@ const UserDashboard = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold pb-4 text-white">User Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {/* Total Expenses */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Total Expenses</CardTitle>
-            <CardDescription>This month</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-4xl font-bold text-red-500">$1,23400</p>
-          </CardContent>
-        </Card>
+    <>
+      <PageTitle title="User Dashboard" />
+      <div className="p-4">
+        <h1 className="text-2xl font-bold pb-4 text-white">User Dashboard</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Total Expenses */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Total Expenses</CardTitle>
+              <CardDescription>This month</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold text-red-500">$1,23400</p>
+            </CardContent>
+          </Card>
 
-        {/* Total Income */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Total Cost This Month</CardTitle>
-            <CardDescription>This month</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-4xl font-bold text-green-500">$2,5000</p>
-          </CardContent>
-        </Card>
+          {/* Total Income */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Total Cost This Month</CardTitle>
+              <CardDescription>This month</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold text-green-500">$2,5000</p>
+            </CardContent>
+          </Card>
 
-        {/* Savings */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Discount</CardTitle>
-            <CardDescription>Got total discount</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-4xl font-bold text-blue-500">$1,266</p>
-          </CardContent>
-        </Card>
-      </div>
+          {/* Savings */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Discount</CardTitle>
+              <CardDescription>Got total discount</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-4xl font-bold text-blue-500">$1,266</p>
+            </CardContent>
+          </Card>
+        </div>
 
-      {/* Expense Chart */}
-      <div className="mt-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Monthly Expenses</CardTitle>
-            <CardDescription>Expense trends over time</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
-              <div className="h-64 sm:h-80 md:h-96">
-                <Bar data={expenseData} options={options} />
+        {/* Expense Chart */}
+        <div className="mt-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Monthly Expenses</CardTitle>
+              <CardDescription>Expense trends over time</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
+                <div className="h-64 sm:h-80 md:h-96">
+                  <Bar data={expenseData} options={options} />
+                </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
