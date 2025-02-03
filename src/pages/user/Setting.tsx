@@ -33,7 +33,7 @@ const Setting = () => {
       newPassword: data?.newPassword,
       email: email,
     };
-    console.log(newPasswordData);
+    newPasswordData;
 
     try {
       const res = await updatePassword(newPasswordData).unwrap();

@@ -51,7 +51,7 @@ const CartSheet = () => {
 
     try {
       const response = await createOrder(order).unwrap();
-      console.log(response);
+      response;
       if (response?.data) {
         toast.success("Order placed successfully!", { id: toastId });
         window.location.href = response.data;

@@ -21,7 +21,7 @@ const AllCars = () => {
     const toastId = toast.loading("Car is deleting....");
     try {
       const res = await deleteCar(carId).unwrap();
-      console.log(res);
+      res;
       if (res.success || res?.data?.success) {
         toast.success("Car deleted successfully", { id: toastId });
       }

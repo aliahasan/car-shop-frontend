@@ -24,12 +24,12 @@ const MyOrders = () => {
   }
 
   const handleCancelOrder = async (orderId: string) => {
-    console.log(orderId);
+    orderId;
     const toastId = toast.loading("order is cancelling..");
     try {
       const res = await cancelOrder(orderId).unwrap();
       if (res?.success || res.data?.success) {
-        console.log(res);
+        res;
         toast.success("Order cancelled successfully", { id: toastId });
       } else {
         console.error("Failed to cancel order", res);

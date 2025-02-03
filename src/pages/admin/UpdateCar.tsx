@@ -52,7 +52,7 @@ const UpdateCarDialog = ({ car, closeModal }: UpdateCarDialogProps) => {
         ...updatedData,
         carId: car._id,
       }).unwrap();
-      console.log(response);
+      response;
       if (response.success || response?.data?.success) {
         toast.success("Car updated successfully", { id: toastId });
         closeModal();

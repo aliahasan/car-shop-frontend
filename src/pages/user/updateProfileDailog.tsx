@@ -34,7 +34,7 @@ export const UpdateProfileDialog = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSave: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+    data;
     onSave({
       name: data?.name || undefined,
       address: data?.address || undefined,
