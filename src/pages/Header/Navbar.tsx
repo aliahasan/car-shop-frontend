@@ -90,6 +90,7 @@ const Navbar = () => {
                 <NavLink
                   key={item.label}
                   to={item.href}
+                  onClick={toggleMobileMenu} // Added onClick to collapse mobile menu
                   className={({ isActive }) =>
                     `text-md font-medium text-white ${
                       isActive
@@ -104,6 +105,7 @@ const Navbar = () => {
               {!user && (
                 <NavLink
                   to="/login"
+                  onClick={toggleMobileMenu} // Added onClick to collapse mobile menu on login click
                   className="text-md py-2 px-6 rounded-full bg-my-btn_clr font-medium text-white"
                 >
                   Login

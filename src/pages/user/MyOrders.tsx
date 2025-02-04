@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Loading from "@/mycomponents/layout/Loading";
 import { selectedUser } from "@/redux/features/auth/authSlice";
 import {
   useCancelOrderMutation,
@@ -20,16 +21,14 @@ const MyOrders = () => {
   const [cancelOrder] = useCancelOrderMutation();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const handleCancelOrder = async (orderId: string) => {
-    orderId;
     const toastId = toast.loading("order is cancelling..");
     try {
       const res = await cancelOrder(orderId).unwrap();
       if (res?.success || res.data?.success) {
-        res;
         toast.success("Order cancelled successfully", { id: toastId });
       } else {
         console.error("Failed to cancel order", res);

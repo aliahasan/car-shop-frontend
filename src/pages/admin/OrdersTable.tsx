@@ -13,6 +13,18 @@ import { useUpdateOrderStatusMutation } from "@/redux/features/admin/adminApi";
 import { TOrderType } from "@/types";
 import toast from "react-hot-toast";
 
+// Import the shadcn AlertDialog components
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 interface OrderTableProps {
   orders: TOrderType[];
 }
@@ -21,7 +33,7 @@ const OrdersTable = ({ orders }: OrderTableProps) => {
   const [updateOrder] = useUpdateOrderStatusMutation();
 
   const handleUpdate = async (orderId: string) => {
-    const toastId = "update";
+    const toastId = toast.loading("Processing ....");
     try {
       const updateOrderPayload = {
         orderStatus: "accepted",
@@ -68,7 +80,7 @@ const OrdersTable = ({ orders }: OrderTableProps) => {
               {order.cars?.reduce((total, car) => total + car.quantity, 0)}
             </TableCell>
             <TableCell>${order?.totalPrice}</TableCell>
-            <TableCell>${order?.transaction?.id}</TableCell>
+            <TableCell>{order?.transaction?.id}</TableCell>
             <TableCell>
               <Badge
                 className={`px-4 py-1 text-md rounded-md text-white ${
@@ -105,14 +117,40 @@ const OrdersTable = ({ orders }: OrderTableProps) => {
             </TableCell>
             <TableCell>
               <div className="flex gap-2">
-                <Button
-                  disabled={order.orderStatus === "accepted"}
-                  className="bg-my-btn_clr"
-                  size="default"
-                  onClick={() => handleUpdate(order._id)}
-                >
-                  Accept
-                </Button>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button
+                      disabled={order.orderStatus === "accepted"}
+                      className="bg-my-btn_clr"
+                      size="default"
+                    >
+                      Accept
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent className="sm:max-w-lg sm:rounded-lg">
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Confirm Order Acceptance
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Are you sure you want to accept this order? This action
+                        will update the order status to{" "}
+                        <strong>accepted</strong>.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <div className="flex flex-col sm:flex-row justify-end mt-4 gap-2">
+                      <AlertDialogCancel className="px-4 py-2 border rounded-md text-sm">
+                        Cancel
+                      </AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={() => handleUpdate(order._id)}
+                        className="px-4 py-2 bg-green-600 text-white rounded-md text-sm"
+                      >
+                        Confirm
+                      </AlertDialogAction>
+                    </div>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
             </TableCell>
           </TableRow>

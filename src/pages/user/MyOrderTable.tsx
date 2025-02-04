@@ -10,6 +10,18 @@ import {
 } from "@/components/ui/table";
 import { TMyOrderType } from "@/types";
 
+// Import the shadcn AlertDialog components
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 interface OrderTableProps {
   orders: TMyOrderType[];
   onCancel: (orderId: string) => void;
@@ -77,14 +89,39 @@ const MyOrderTable = ({ orders, onCancel }: OrderTableProps) => {
             </TableCell>
             <TableCell>
               <div className="flex gap-2">
-                <Button
-                  disabled={order.orderStatus === "accepted"}
-                  className="bg-my-btn_clr"
-                  size="default"
-                  onClick={() => onCancel(order._id)}
-                >
-                  Cancel
-                </Button>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button
+                      disabled={order.orderStatus === "accepted"}
+                      className="bg-my-btn_clr"
+                      size="default"
+                    >
+                      Cancel
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent className="sm:max-w-lg sm:rounded-lg">
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Are you sure you want to cancel this order?
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This action cannot be undone. Please confirm if you wish
+                        to proceed.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <div className="flex flex-col sm:flex-row justify-end mt-4 gap-2">
+                      <AlertDialogCancel className="px-4 py-2 border rounded-md text-sm">
+                        Cancel
+                      </AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={() => onCancel(order._id)}
+                        className="px-4 py-2 bg-red-600 text-white rounded-md text-sm"
+                      >
+                        Okay
+                      </AlertDialogAction>
+                    </div>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
             </TableCell>
           </TableRow>
