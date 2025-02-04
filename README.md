@@ -4,7 +4,7 @@
 
 ## 🌟 Live Demo
 
-🔗 [https://car-shop-olive.vercel.app](#) <!-- Replace # with your live link -->
+🔗 [https://car-shop-olive.vercel.app]
 
 ## 📌 Application Features
 
