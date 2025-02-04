@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import Loading from "@/mycomponents/layout/Loading";
 import { useGetCarByIdQuery } from "@/redux/features/car/carApi";
 import { addToCart } from "@/redux/features/cart/CartSlice";
 import { useAppDispatch } from "@/redux/hook";
@@ -6,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const CarDetails = () => {
   const { id } = useParams();
-  const { data: carData } = useGetCarByIdQuery(id);
+  const { data: carData, isLoading } = useGetCarByIdQuery(id);
   const car = carData?.data;
 
   const dispatch = useAppDispatch();
@@ -23,7 +24,10 @@ const CarDetails = () => {
     dispatch(addToCart(cartData));
   };
 
-  if (!car) return <div>Car not found</div>;
+  if (!car) return <div>car data not found</div>;
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="min-h-screen py-4 lg:py-8 text-white">
       <div className="mx-auto">

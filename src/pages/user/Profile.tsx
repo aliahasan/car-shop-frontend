@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
+import Loading from "@/mycomponents/layout/Loading";
 import { selectedUser } from "@/redux/features/auth/authSlice";
 import {
   useGetMyselfQuery,
@@ -46,15 +46,7 @@ const Profile = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <Skeleton className="h-12 w-12 rounded-full" />
-        <div className="space-y-2 ml-4">
-          <Skeleton className="h-4 w-[250px]" />
-          <Skeleton className="h-4 w-[200px]" />
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

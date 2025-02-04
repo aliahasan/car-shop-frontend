@@ -1,13 +1,16 @@
+import Loading from "@/mycomponents/layout/Loading";
 import { useGetAllUsersQuery } from "@/redux/features/admin/adminApi";
 import PageTitle from "@/shared/PageTitle";
 import UsersTable from "./UsersTable";
 
 const AllUsers = () => {
-  const { data: allUsers } = useGetAllUsersQuery(undefined, {
+  const { data: allUsers, isLoading } = useGetAllUsersQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
   const users = allUsers?.data;
-
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <>
       <PageTitle title="Admin | All-users" />

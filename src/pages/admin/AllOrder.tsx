@@ -1,3 +1,4 @@
+import Loading from "@/mycomponents/layout/Loading";
 import { useGetAllOrdersQuery } from "@/redux/features/admin/adminApi";
 import PageTitle from "@/shared/PageTitle";
 import OrdersTable from "./OrdersTable";
@@ -8,7 +9,7 @@ const AllOrder = () => {
   });
   const orders = OrdersData?.data || [];
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   return (
     <>

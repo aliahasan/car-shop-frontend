@@ -1,8 +1,8 @@
 import SearchFilter from "@/mycomponents/form/SearchFilter";
+import Loading from "@/mycomponents/layout/Loading";
 import { useGetAllCarsQuery } from "@/redux/features/car/carApi";
 import Container from "@/shared/Container";
 import PageTitle from "@/shared/PageTitle";
-import CardSkeleton from "@/shared/Skeleton";
 import { TCar } from "@/types";
 import { useState } from "react";
 import CarCard from "./CarCard";
@@ -25,11 +25,7 @@ const AllProducts = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <CardSkeleton />
-      </div>
-    );
+    return <Loading />;
   }
 
   if (isError) {

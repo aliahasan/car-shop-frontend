@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Loading from "@/mycomponents/layout/Loading";
 import { clearCart } from "@/redux/features/cart/CartSlice";
 import { useVerifyOrderQuery } from "@/redux/features/oreder/orderApi";
 import { useAppDispatch } from "@/redux/hook";
@@ -16,13 +17,7 @@ const VerifyOrder = () => {
   const orderData: IOrderVerify = data?.data?.[0];
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center ">
-        <h1 className="text-2xl font-semibold text-gray-700">
-          Loading order details...
-        </h1>
-      </div>
-    );
+    return <Loading />;
   }
   if (orderData.bank_status === "Success") {
     dispatch(clearCart());
