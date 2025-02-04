@@ -14,7 +14,7 @@ const userApi = baseApi.injectEndpoints({
         url: `/order/cancel-order/?orderId=${orderId}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["orders", "my-orders"],
+      invalidatesTags: ["my-orders", "orders"],
     }),
     getMyself: builder.query({
       query: (email) => ({

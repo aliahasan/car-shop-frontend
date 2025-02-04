@@ -69,7 +69,7 @@ const CartSheet = () => {
     <Sheet>
       <SheetTrigger asChild>
         <div className="relative cursor-pointer">
-          <ShoppingBag className="h-6 w-6 text-white mr-2 items-centers" />
+          <ShoppingBag className="h-6 w-6 text-white mr-4 lg:mr-6 items-centers" />
           {cartData.totalQuantity > 0 && (
             <Badge className="absolute -top-4 right-2 bg-white text-black rounded-full text-xs p-1 min-w-[24px] min-h-[24px] flex items-center justify-center shadow-lg">
               {cartData.totalQuantity}

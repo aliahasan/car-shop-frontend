@@ -11,6 +11,7 @@ const AllOrder = () => {
   if (isLoading) {
     return <Loading />;
   }
+
   return (
     <>
       <PageTitle title="Admin | All-orders " />

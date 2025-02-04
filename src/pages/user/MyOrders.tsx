@@ -13,7 +13,11 @@ import MyOrderTable from "./MyOrderTable";
 const MyOrders = () => {
   const user = useAppSelector(selectedUser);
   const email = user?.email;
-  const { data: myOrder, isLoading } = useGetMyAllOrdersQuery(email, {
+  const {
+    data: myOrder,
+    isLoading,
+    isFetching,
+  } = useGetMyAllOrdersQuery(email, {
     refetchOnMountOrArgChange: true,
   });
   const orders = myOrder?.data;
@@ -21,6 +25,9 @@ const MyOrders = () => {
   const [cancelOrder] = useCancelOrderMutation();
 
   if (isLoading) {
+    return <Loading />;
+  }
+  if (isFetching) {
     return <Loading />;
   }
 

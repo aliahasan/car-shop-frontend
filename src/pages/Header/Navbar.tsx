@@ -49,14 +49,13 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center">
-            {/* Replace ShoppingBag with CartSheet */}
             <CartSheet />
 
             {user && <UserMenu />}
 
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden text-md pb-2 py-2 pl-1 lg:px-2 font-medium text-white"
+              className="lg:hidden text-md pb-2 py-2 pl-4 lg:px-2 font-medium text-white"
             >
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -69,7 +68,7 @@ const Navbar = () => {
               {!user && (
                 <NavLink
                   to="/login"
-                  className="text-md pb-2 py-1 lg:mr-4 px-6 rounded-full bg-my-btn_clr font-medium text-white"
+                  className="text-md pb-2 py-1  px-6 rounded-full bg-my-btn_clr font-medium text-white"
                 >
                   Login
                 </NavLink>
@@ -90,7 +89,7 @@ const Navbar = () => {
                 <NavLink
                   key={item.label}
                   to={item.href}
-                  onClick={toggleMobileMenu} // Added onClick to collapse mobile menu
+                  onClick={toggleMobileMenu}
                   className={({ isActive }) =>
                     `text-md font-medium text-white ${
                       isActive
@@ -105,7 +104,7 @@ const Navbar = () => {
               {!user && (
                 <NavLink
                   to="/login"
-                  onClick={toggleMobileMenu} // Added onClick to collapse mobile menu on login click
+                  onClick={toggleMobileMenu}
                   className="text-md py-2 px-6 rounded-full bg-my-btn_clr font-medium text-white"
                 >
                   Login

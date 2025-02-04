@@ -73,7 +73,7 @@ const Login = () => {
           <div className="mt-6">
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="flex w-full justify-center rounded-md bg-my-btn_clr px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               {isLoading ? "Please wait..." : "Sign in"}
             </button>

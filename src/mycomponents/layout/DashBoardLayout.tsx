@@ -32,7 +32,7 @@ const DashboardLayout = () => {
             </Link>
             {/* Menu Icon on the right */}
             <div className="flex items-center ">
-              {user && <UserMenu />}
+              <div className="mr-1 lg:mr-2">{user && <UserMenu />}</div>
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 className="text-white p-2 rounded-lg focus:outline-none lg:hidden"

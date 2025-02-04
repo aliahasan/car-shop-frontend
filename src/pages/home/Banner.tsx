@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -38,14 +39,16 @@ const Banner = () => {
         </motion.p>
 
         {/* Button */}
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 z-10"
-        >
-          Explore Now
-        </motion.button>
+        <Link to="/all-products">
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 z-10"
+          >
+            Explore Now
+          </motion.button>
+        </Link>
       </motion.div>
 
       {/* Mobile View: Text and Button Below the Image */}
@@ -76,14 +79,16 @@ const Banner = () => {
         </motion.p>
 
         {/* Button */}
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          className="bg-my-btn_clr hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300"
-        >
-          Explore Now
-        </motion.button>
+        <Link to="/all-products">
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
+            className="bg-my-btn_clr hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all duration-300"
+          >
+            Explore Now
+          </motion.button>
+        </Link>
       </motion.div>
     </div>
   );

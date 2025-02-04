@@ -7,7 +7,13 @@ import { useParams } from "react-router-dom";
 
 const CarDetails = () => {
   const { id } = useParams();
-  const { data: carData, isLoading } = useGetCarByIdQuery(id);
+  const {
+    data: carData,
+    isLoading,
+    isFetching,
+  } = useGetCarByIdQuery(id, {
+    refetchOnMountOrArgChange: true,
+  });
   const car = carData?.data;
 
   const dispatch = useAppDispatch();
@@ -25,6 +31,9 @@ const CarDetails = () => {
   };
 
   if (!car) return <div>car data not found</div>;
+  if (isFetching) {
+    return <Loading />;
+  }
   if (isLoading) {
     return <Loading />;
   }
