@@ -7,12 +7,14 @@ import {
 import { addToCart } from "@/redux/features/cart/CartSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { CarCardProps } from "@/types";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const CarCard = ({ car }: CarCardProps) => {
   const dispatch = useAppDispatch();
 
   const handleAddToCart = (id: string) => {
+    const toastId = "cart";
     const cartData = {
       car: id,
       name: car.name,
@@ -22,6 +24,7 @@ const CarCard = ({ car }: CarCardProps) => {
       stock: car.quantity,
     };
     dispatch(addToCart(cartData));
+    toast.success("car added to the cart", { id: toastId });
   };
 
   return (

@@ -11,7 +11,7 @@ const Register = () => {
   const [registerUser, { isLoading }] = useRegisterMutation();
 
   const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const toastId = "register";
+    const toastId = toast.loading("creating account...");
     try {
       const res = await registerUser(data).unwrap();
       if (res?.success || res?.data?.success) {

@@ -3,6 +3,7 @@ import Loading from "@/mycomponents/layout/Loading";
 import { useGetCarByIdQuery } from "@/redux/features/car/carApi";
 import { addToCart } from "@/redux/features/cart/CartSlice";
 import { useAppDispatch } from "@/redux/hook";
+import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
 const CarDetails = () => {
@@ -15,6 +16,7 @@ const CarDetails = () => {
   const dispatch = useAppDispatch();
 
   const handleAddToCart = (id: string) => {
+    const toastId = "cart";
     const cartData = {
       car: id,
       name: car.name,
@@ -24,6 +26,7 @@ const CarDetails = () => {
       stock: car.quantity,
     };
     dispatch(addToCart(cartData));
+    toast.success("car added to the cart", { id: toastId });
   };
 
   if (!car) return <div>car data not found</div>;
