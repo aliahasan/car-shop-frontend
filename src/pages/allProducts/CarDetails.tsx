@@ -25,8 +25,8 @@ const CarDetails = () => {
 
   if (!car) return <div>Car not found</div>;
   return (
-    <div className="min-h-screen  py-12 text-white">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen py-4 lg:py-8 text-white">
+      <div className="mx-auto">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="relative h-64  lg:h-[70vh]">
             <img

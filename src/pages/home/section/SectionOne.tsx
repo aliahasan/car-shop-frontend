@@ -3,19 +3,19 @@ import SectionTitle from "@/shared/SectionTitle";
 
 const SectionOne = () => {
   return (
-    <section className="py-6 lg:py-16">
+    <section className="py-6 lg:py-20">
       <div className="flex flex-col space-y-8 lg:space-y-0 lg:flex-row lg:space-x-10">
         <div>
           <figure>
             <img
-              src="https://i.ibb.co.com/1Rk38xd/why-choose-us-image-illustration.png"
+              src="https://i.ibb.co.com/Vpc1V7fx/why-choose-us.jpg"
               alt="Why Choose Us"
-              className="object-cover  md:max-w-xl"
+              className="object-cover rounded  md:max-w-full lg:max-w-[650px]"
             />
           </figure>
         </div>
 
-        <div className="lg:text-left lg:pt-24 lg:pl-16">
+        <div className="lg:text-left lg:pt-10 lg:pl-10">
           <SectionTitle
             title="Why Choose Our Services"
             heading="Reasons to Choose Us"

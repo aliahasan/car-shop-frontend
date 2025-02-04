@@ -5,7 +5,7 @@ const Banner = () => {
     <div className="relative w-full overflow-hidden">
       {/* Image */}
       <img
-        className="w-full lg:h-[70vh] object-cover"
+        className="w-full lg:h-[70vh] object-cover rounded"
         src="https://i.ibb.co/cf5rWQf/nicecar.jpg"
         alt="Banner"
       />
