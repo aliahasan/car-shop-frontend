@@ -7,7 +7,9 @@ const AllOrder = () => {
   const { data: OrdersData, isLoading } = useGetAllOrdersQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
+
   const orders = OrdersData?.data || [];
+
   if (isLoading) {
     return <Loading />;
   }

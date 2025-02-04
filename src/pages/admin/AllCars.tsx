@@ -10,11 +10,7 @@ import { Link } from "react-router-dom";
 import CarsTable from "./CarsTable";
 
 const AllCars = () => {
-  const {
-    data: carsData,
-    isLoading,
-    isFetching,
-  } = useGetAllCarsQuery(undefined, {
+  const { data: carsData, isLoading } = useGetAllCarsQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
 
@@ -38,9 +34,6 @@ const AllCars = () => {
     }
   };
 
-  if (isFetching) {
-    return <Loading />;
-  }
   if (isLoading) {
     return <Loading />;
   }

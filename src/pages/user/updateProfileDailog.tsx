@@ -34,7 +34,6 @@ export const UpdateProfileDialog = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSave: SubmitHandler<FieldValues> = (data) => {
-    data;
     onSave({
       name: data?.name || undefined,
       address: data?.address || undefined,
@@ -60,25 +59,25 @@ export const UpdateProfileDialog = ({
               type="text"
               name="name"
               label="Name"
-              defaultValue={user.name}
+              defaultValue={user?.name}
             />
             <RHInput
               type="text"
               name="address"
               label="Address"
-              defaultValue={user.address}
+              defaultValue={user?.address}
             />
             <RHInput
               type="text"
               name="city"
               label="City"
-              defaultValue={user.city}
+              defaultValue={user?.city}
             />
             <RHInput
               type="text"
               name="phone"
               label="Phone"
-              defaultValue={user.phone}
+              defaultValue={user?.phone}
             />
 
             <Button type="submit" className="w-full mt-10">

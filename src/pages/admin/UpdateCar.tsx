@@ -52,7 +52,7 @@ const UpdateCarDialog = ({ car, closeModal }: UpdateCarDialogProps) => {
         ...updatedData,
         carId: car._id,
       }).unwrap();
-      response;
+
       if (response.success || response?.data?.success) {
         toast.success("Car updated successfully", { id: toastId });
         closeModal();
@@ -89,6 +89,12 @@ const UpdateCarDialog = ({ car, closeModal }: UpdateCarDialogProps) => {
             name="brand"
             label="Brand"
             defaultValue={car.brand}
+          />
+          <RHInput
+            type="text"
+            name="model"
+            label="Model"
+            defaultValue={car.model}
           />
           <RHInput
             type="number"
