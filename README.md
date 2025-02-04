@@ -1,50 +1,33 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🚗 Car Shop
 
-Currently, two official plugins are available:
+## 🌟 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [https://car-shop-olive.vercel.app](#) <!-- Replace # with your live link -->
 
-## Expanding the ESLint configuration
+## 📌 Application Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 🔹 User Features
 
-- Configure the top-level `parserOptions` property like this:
+- 🔑 **Authentication**: Users can create an account, log in, and log out securely.
+- 🔄 **Change Password**: Users can update their password for better security.
+- 🛒 **Car Purchase**: Users can browse available cars and add them to their cart.
+- 📋 **Order Management**: Users can view their placed orders and cancel them if needed.
+- ✏️ **Profile Management**: Users can update their profile information at any time.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 🔹 Admin Features
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- ✅ **Order Management**: Admins can accept or reject orders placed by users.
+- 🚘 **Car Management**: Admins can add new cars, update existing car details, and delete cars from the inventory.
+- 🚫 **User Management**: Admins have the ability to block or restrict user access.
+- 📊 **Order Overview**: Admins can view total orders and track business performance.
+- ✏️ **Profile Management**: Admins can update their own profile details.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🛠️ Tech Stack
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT (JSON Web Token)
+- **Payment:** Shurjopay (if applicable)
