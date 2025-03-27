@@ -18,14 +18,14 @@ const UserMenu = () => {
     Cookies.remove("token");
     dispatch(logout());
     dispatch(clearCart());
-    navigate("/login");
+    navigate("/");
   };
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <button className="flex items-center text-white focus:outline-none">
-          <User className="h-6 w-6" />
+          <User className="h-6 w-6 text-my-text_clr" />
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-40 bg-black text-white border border-gray-700 rounded-md p-2 shadow-lg">

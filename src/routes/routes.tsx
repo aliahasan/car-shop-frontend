@@ -5,13 +5,18 @@ import AddCar from "@/pages/admin/AddCar";
 import AllCars from "@/pages/admin/AllCars";
 import AllOrder from "@/pages/admin/AllOrder";
 import AllUsers from "@/pages/admin/AllUsers";
+import AddService from "@/pages/admin/Service/AddService";
+import AllService from "@/pages/admin/Service/AllServices";
 import AllProducts from "@/pages/allProducts/AllProducts";
 import CarDetails from "@/pages/allProducts/CarDetails";
+
 import ErrorPage from "@/pages/error/ErrorPage";
 import Home from "@/pages/home/Home";
 import Login from "@/pages/Login";
 import VerifyOrder from "@/pages/order/VerifyOrder";
 import Register from "@/pages/Register";
+import ServicePage from "@/pages/Service";
+import ServiceDetailsPage from "@/pages/Service/ServiceDetails";
 import MyOrders from "@/pages/user/MyOrders";
 import Profile from "@/pages/user/Profile";
 import Setting from "@/pages/user/Setting";
@@ -36,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: "/car/:id",
         element: <CarDetails />,
+      },
+      {
+        path: "/service",
+        element: <ServicePage />,
+      },
+      {
+        path: "/service/:id",
+        element: <ServiceDetailsPage />,
       },
       {
         path: "/order/verify",
@@ -99,6 +112,23 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "all-service",
+        element: (
+          <PrivateRoute>
+            <AllService />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "add-service",
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
+      },
+      //use items
       {
         path: "my-orders",
         element: (

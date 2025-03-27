@@ -1,7 +1,13 @@
 import { ReactNode } from "react";
 
-const Container = ({ children }: { children: ReactNode }) => {
-  return <div className="container mx-auto">{children}</div>;
+interface ContainerProps {
+  children: ReactNode;
+  className?: string;
+}
+const Container = ({ children, className = "" }: ContainerProps) => {
+  return (
+    <div className={`container mx-auto px-2 ${className}`}>{children}</div>
+  );
 };
 
 export default Container;

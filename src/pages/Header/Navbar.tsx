@@ -1,5 +1,6 @@
 import { selectedUser } from "@/redux/features/auth/authSlice";
 import { useAppSelector } from "@/redux/hook";
+import Container from "@/shared/Container";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
@@ -13,6 +14,7 @@ const Navbar = () => {
     { label: "Home", href: "/" },
     { label: "Cars", href: "/all-products" },
     { label: "About", href: "/about" },
+    { label: "Services", href: "/service" },
   ];
   const user = useAppSelector(selectedUser);
 
@@ -21,8 +23,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky backdrop-blur-md top-0 left-0 border-b border-gray-700 z-50">
-      <div className=" max-w-screen-2xl mx-auto px-4">
+    <nav className="sticky backdrop-blur-md bg-white top-0 left-0 border z-50">
+      <Container>
         <div className="flex justify-between items-center h-16">
           <Link to="/">
             <div className="flex-shrink-0 flex items-center">
@@ -30,13 +32,13 @@ const Navbar = () => {
               <h1 className="text-my-btn_clr text-2xl font-bold">RideHaven</h1>
             </div>
           </Link>
-          <div className="hidden lg:flex lg:items-center lg:space-x-16">
+          <div className="hidden lg:flex lg:items-center lg:space-x-12">
             {navLinks.map((item) => (
               <NavLink
                 key={item.label}
                 to={item.href}
                 className={({ isActive }) =>
-                  `text-md font-medium text-white ${
+                  `text-md font-medium text-my-text_clr ${
                     isActive
                       ? "underline underline-offset-4"
                       : "hover:underline underline-offset-4"
@@ -55,12 +57,12 @@ const Navbar = () => {
 
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden text-md pb-2 py-2 pl-4 lg:px-2 font-medium text-white"
+              className="lg:hidden text-md pb-2 py-2 pl-4 lg:px-2 font-medium "
             >
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-6 w-6 " />
               )}
             </button>
 
@@ -79,7 +81,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed top-0 left-0 h-screen w-64 bg-black shadow-md transform transition-transform duration-300 ease-in-out border-r border-gray-700 ${
+          className={`lg:hidden fixed top-0 left-0 h-screen w-64 bg-gray-200 shadow-md transform transition-transform duration-300 ease-in-out border-r border ${
             isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
@@ -91,7 +93,7 @@ const Navbar = () => {
                   to={item.href}
                   onClick={toggleMobileMenu}
                   className={({ isActive }) =>
-                    `text-md font-medium text-white ${
+                    `text-md font-medium text-my-text_clr ${
                       isActive
                         ? "underline underline-offset-4"
                         : "hover:underline underline-offset-4"
@@ -113,7 +115,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </nav>
   );
 };

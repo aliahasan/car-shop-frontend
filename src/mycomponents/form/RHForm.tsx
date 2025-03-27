@@ -10,9 +10,13 @@ type TFormProps = {
 const RHForm = ({ onSubmit, children }: TFormProps) => {
   const form = useForm();
 
+  const submit: SubmitHandler<FieldValues> = (data) => {
+    onSubmit(data);
+    form.reset();
+  };
   return (
     <Form {...form} control={form.control}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>{children}</form>
+      <form onSubmit={form.handleSubmit(submit)}>{children}</form>
     </Form>
   );
 };

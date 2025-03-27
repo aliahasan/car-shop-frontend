@@ -1,18 +1,10 @@
 import { baseApi } from "@/redux/api/baseApi";
-import { TQueryParam } from "@/types";
 
 const carApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllCars: builder.query({
-      query: (args) => {
-        const params = new URLSearchParams();
-        if (args) {
-          args.forEach((item: TQueryParam) => {
-            if (item.value) {
-              params.append(item.name, item.value as string);
-            }
-          });
-        }
+      query: (query) => {
+        const params = Object.fromEntries(new URLSearchParams(query));
         return {
           url: "/cars/all-cars",
           method: "GET",
@@ -21,6 +13,18 @@ const carApi = baseApi.injectEndpoints({
       },
       providesTags: ["cars"],
     }),
+    getAllCarCategories: builder.query({
+      query: () => ({
+        url: "/cars/categories",
+        method: "GET",
+      }),
+    }),
+    getAllBrands: builder.query({
+      query: () => ({
+        url: "/cars/brands",
+        method: "GET",
+      }),
+    }),
     getCarById: builder.query({
       query: (id) => ({
         url: `/cars/${id}`,
@@ -28,7 +32,20 @@ const carApi = baseApi.injectEndpoints({
         providesTags: ["cars"],
       }),
     }),
+
+    getReconditionCars: builder.query({
+      query: () => ({
+        url: "/cars/recondition",
+        method: "GET",
+        providesTags: ["cars"],
+      }),
+    }),
   }),
 });
 
-export const { useGetAllCarsQuery, useGetCarByIdQuery } = carApi;
+export const {
+  useGetAllCarsQuery,
+  useGetCarByIdQuery,
+  useGetAllCarCategoriesQuery,
+  useGetAllBrandsQuery,
+} = carApi;

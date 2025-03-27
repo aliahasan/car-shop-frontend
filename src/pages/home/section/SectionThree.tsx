@@ -21,8 +21,8 @@ const SectionThree = () => {
   }, []);
 
   return (
-    <section className="py-6 lg:py-16">
-      <div className="text-center pb-10">
+    <section className="py-6 lg:py-12">
+      <div className="text-center py-10">
         <SectionTitle
           title="Testimonials"
           heading="What our customers are saying"
@@ -43,7 +43,7 @@ const SectionThree = () => {
       >
         {reviews.map((review: TReview, index) => (
           <SwiperSlide key={index} className="flex justify-center">
-            <Card className="w-full flex flex-col justify-between bg-[#0a0a0a] text-white shadow-lg">
+            <Card className="w-full flex flex-col justify-between  shadow-md">
               <CardHeader className="flex items-center space-x-4">
                 <Avatar>
                   <AvatarImage src={review.image} alt={review.name} />
@@ -51,7 +51,7 @@ const SectionThree = () => {
                 </Avatar>
                 <div>
                   <p className="font-semibold">{review.name}</p>
-                  <p className="text-sm text-gray-400">⭐⭐⭐⭐⭐</p>
+                  <p className="text-sm text-my-text_clr">⭐⭐⭐⭐⭐</p>
                 </div>
               </CardHeader>
               <CardContent className="flex-grow">

@@ -47,3 +47,8 @@ export interface CarCardProps {
     _id: string;
   };
 }
+
+export interface ICategories {
+  category: string;
+  image: string[];
+}

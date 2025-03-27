@@ -52,7 +52,7 @@ export default {
         },
         my: {
           btn_clr: "#3B82F6",
-          text_clr: "#CECECE",
+          text_clr: "#1f1f1f",
         },
       },
     },

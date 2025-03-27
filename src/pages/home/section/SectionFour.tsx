@@ -24,12 +24,12 @@ const SectionFour = () => {
   }
 
   return (
-    <div className="py-6 lg:py-16">
-      <section className="text-center">
+    <div className="py-6 lg:py-12">
+      <section className="text-center py-10">
         <SectionTitle title="Featured cars" heading="Our featured cars" />
       </section>
       <section>
-        <div className="py-6">
+        <div>
           {
             <div>
               {cars?.data?.length === 0 ? (
@@ -39,8 +39,8 @@ const SectionFour = () => {
                   </h2>
                 </div>
               ) : (
-                <div className="pt-6 grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {cars?.data?.slice(0, 4)?.map((car: TCar) => (
+                <div className=" grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                  {cars?.data?.slice(0, 5)?.map((car: TCar) => (
                     <CarCard key={car._id} car={car} />
                   ))}
                 </div>

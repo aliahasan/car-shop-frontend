@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Pagination from "@/components/core/Pagination";
 import { Button } from "@/components/ui/button";
 import Loading from "@/mycomponents/layout/Loading";
 import { useDeleteCarMutation } from "@/redux/features/admin/adminApi";
@@ -6,16 +7,22 @@ import { useGetAllCarsQuery } from "@/redux/features/car/carApi";
 import PageTitle from "@/shared/PageTitle";
 import { Plus } from "lucide-react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import CarsTable from "./CarsTable";
 
 const AllCars = () => {
-  const { data: carsData, isLoading } = useGetAllCarsQuery(undefined, {
+  const [searchParams] = useSearchParams();
+  const query = Object.fromEntries(searchParams.entries());
+  const { data: carsData, isLoading } = useGetAllCarsQuery(query, {
     refetchOnMountOrArgChange: true,
   });
 
   const [deleteCar] = useDeleteCarMutation();
+  if (isLoading) {
+    return <Loading />;
+  }
   const cars = carsData?.data || [];
+  const { meta } = carsData;
 
   const handleDelete = async (carId: string) => {
     const toastId = toast.loading("Car is deleting....");
@@ -34,16 +41,12 @@ const AllCars = () => {
     }
   };
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     <>
       <PageTitle title="Admin-all-cars" />
-      <div className="container mx-auto ">
+      <div className="container mx-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-white">All Cars</h1>
+          <h1 className="text-2xl font-bold text-my-text_clr">All Cars</h1>
           <Link to="/dashboard/add-car">
             <Button>
               <Plus className="w-4 h-4 mr-2" />
@@ -52,6 +55,9 @@ const AllCars = () => {
           </Link>
         </div>
         <CarsTable cars={cars} onDelete={handleDelete} />
+        <div className="my-5">
+          <Pagination totalPage={meta?.totalPage} />
+        </div>
       </div>
     </>
   );

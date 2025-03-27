@@ -1,7 +1,9 @@
 import {
   Car,
   ClipboardList,
+  Cog,
   Home,
+  LayoutDashboard,
   PlusCircle,
   Settings,
   User,
@@ -17,18 +19,36 @@ const AdminMenu = () => {
       icon: <Home size={20} />,
     },
     {
-      label: "Add Car",
+      label: "DashBoard",
+      href: "/dashboard",
+      icon: <LayoutDashboard size={20} />,
+      exact: true,
+    },
+
+    {
+      label: "Add-Car",
       href: "/dashboard/add-car",
       icon: <PlusCircle size={20} />,
     },
-    { label: "All Cars", href: "/dashboard/all-cars", icon: <Car size={20} /> },
+    { label: "All-Cars", href: "/dashboard/all-cars", icon: <Car size={20} /> },
     {
-      label: "All Orders",
+      label: "All-Service",
+      href: "/dashboard/all-service",
+      icon: <Cog size={20} />,
+    },
+    {
+      label: "Add-Service",
+      href: "/dashboard/add-service",
+      icon: <Cog size={20} />,
+    },
+
+    {
+      label: "All-Orders",
       href: "/dashboard/all-orders",
       icon: <ClipboardList size={20} />,
     },
     {
-      label: "All Users",
+      label: "All-Users",
       href: "/dashboard/all-users",
       icon: <Users size={20} />,
     },
@@ -45,16 +65,15 @@ const AdminMenu = () => {
   ];
 
   return (
-    <nav className="flex flex-col space-y-2 ">
+    <nav className="flex flex-col space-y-2">
       {links.map((link, index) => (
         <NavLink
           key={index}
           to={link.href}
+          end={link.exact}
           className={({ isActive }) =>
-            `flex items-center space-x-3 p-3 rounded-lg transition-all duration-200 ${
-              isActive
-                ? "bg-my-btn_clr text-white shadow-lg"
-                : "text-my-text_clr bg-[#292524]"
+            `flex items-center space-x-3 p-3 rounded transition-all duration-200 ${
+              isActive ? "bg-gray-300 text-gray-900" : "text-gray-700"
             }`
           }
         >

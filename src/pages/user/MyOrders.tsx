@@ -48,7 +48,7 @@ const MyOrders = () => {
       <PageTitle title="User-orders" />
       <div className="container mx-auto overflow-x-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-white">My Orders</h1>
+          <h1 className="text-2xl font-bold text-my-text_clr">My Orders</h1>
         </div>
         <MyOrderTable orders={orders} onCancel={handleCancelOrder} />
       </div>

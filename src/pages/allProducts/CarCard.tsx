@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,6 +8,7 @@ import {
 import { addToCart } from "@/redux/features/cart/CartSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { CarCardProps } from "@/types";
+import { ShoppingCart } from "lucide-react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
@@ -24,56 +26,49 @@ const CarCard = ({ car }: CarCardProps) => {
       stock: car.quantity,
     };
     dispatch(addToCart(cartData));
-    toast.success("car added to the cart", { id: toastId });
+    toast.success("Car added to the cart!", { id: toastId });
   };
 
   return (
     <Card
-      className="bg-[#0a0a0a] text-white shadow-lg rounded-xl overflow-hidden 
-      border border-gray-800"
+      className="bg-gray-50 text-white shadow-sm round-xl overflow-hidden 
+   border "
     >
       <CardHeader className="p-0 relative">
         <img
           src={car?.images?.[0] ?? ""}
           alt={car?.name}
-          className="w-full h-60 object-cover transition-transform duration-300 hover:scale-110"
+          className="w-full h-44 object-cover transition-transform duration-300 hover:scale-110"
         />
         <div className="absolute top-2 right-2 bg-black/70 px-3 py-1 rounded-full text-sm font-semibold flex items-center space-x-1">
           <span>⭐</span>
           <span>{car?.rating}</span>
         </div>
       </CardHeader>
-      <CardContent className="p-6 space-y-3">
+      <CardContent className="p-3 space-y-3">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold">{car.name}</h2>
-          <p className="text-gray-400 text-sm">
+          <h2 className="text-xl text-my-text_clr font-bold">{car.name}</h2>
+          <p className="text-gray-900 text-sm">
             {car?.brand} | {car?.model}
           </p>
         </div>
-        <p className="text-lg font-semibold text-blue-500">${car?.price}</p>
-
-        {/* Features (Optional) */}
-        <div className="flex space-x-2 text-sm text-gray-400">
-          <span>🚗 {car?.transmission}</span>
-          <span>⛽ Electric</span>
-          <span>💺 {car?.seatingCapacity}</span>
-        </div>
+        <p className="text-md font-semibold text-my-text_clr">${car?.price}</p>
       </CardContent>
 
       {/* View Details and Add to Cart Buttons */}
-      <CardFooter className="p-6 pt-0">
-        <div className="flex gap-4 w-full">
+      <CardFooter className="p-2 pt-0">
+        <div className="flex gap-4 w-full pb-1">
           <Link to={`/car/${car?._id}`} className="w-full">
-            <button className="w-full bg-my-btn_clr  text-white font-semibold py-2 rounded-lg ">
+            <Button className=" px-3 rounded-full bg-my-btn_clr text-sm  text-white font-semibold py-2">
               View Details
-            </button>
+            </Button>
           </Link>
-          <button
+          <Button
             onClick={() => handleAddToCart(car._id)}
-            className="w-full bg-white  text-gray-500 font-semibold py-1 rounded-lg"
+            className=" p-3 tw text-sm text-white font-semibold py-1 rounded-full bg-my-btn_clr"
           >
-            Add to Cart
-          </button>
+            <ShoppingCart />
+          </Button>
         </div>
       </CardFooter>
     </Card>

@@ -48,13 +48,13 @@ const UsersTable = ({ users }: IUsersProps) => {
   };
 
   return (
-    <Table className="w-full text-white">
+    <Table className="w-full text-my-text_clr overflow-auto">
       <TableHeader>
         <TableRow>
-          <TableHead>User Image</TableHead>
-          <TableHead>User Name</TableHead>
-          <TableHead>User Email</TableHead>
-          <TableHead>User Role</TableHead>
+          <TableHead>Image</TableHead>
+
+          <TableHead>Email</TableHead>
+          <TableHead>Role</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Update Status</TableHead>
         </TableRow>
@@ -76,10 +76,9 @@ const UsersTable = ({ users }: IUsersProps) => {
                   alt="Default User"
                 />
               )}
+              <span>{user?.name}</span>
             </TableCell>
-            <TableCell>
-              <h1>{user?.name}</h1>
-            </TableCell>
+
             <TableCell>{user?.email}</TableCell>
             <TableCell>{user?.role.toUpperCase()}</TableCell>
             <TableCell>

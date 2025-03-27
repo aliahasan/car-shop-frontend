@@ -9,21 +9,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { TCar } from "@/types";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
 import { useState } from "react";
+import DeleteCarDialog from "./DeleteCarDialog";
 import UpdateCarDialog from "./UpdateCar";
-
-// Import shadcn AlertDialog components
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 
 interface CarsTableProps {
   cars: TCar[];
@@ -36,7 +25,7 @@ const CarsTable = ({ cars, onDelete }: CarsTableProps) => {
   const [selectedCar, setSelectedCar] = useState<TCar | null>(null);
 
   return (
-    <Table className="w-full text-white overflow-x-auto">
+    <Table className="w-full text-my-text_clr overflow-auto">
       <TableHeader>
         <TableRow>
           <TableHead>Image</TableHead>
@@ -55,7 +44,7 @@ const CarsTable = ({ cars, onDelete }: CarsTableProps) => {
               <img
                 src={car.images[0]}
                 alt={car.name}
-                className="w-12 h-12 object-cover rounded-md"
+                className="w-16 h-12 object-cover rounded"
               />
             </TableCell>
             <TableCell>{car?.name}</TableCell>
@@ -71,7 +60,9 @@ const CarsTable = ({ cars, onDelete }: CarsTableProps) => {
                       <Pencil className="w-4 h-4" />
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[825px]">
+                  <DialogContent className="max-w-2xl p-0">
+                    {" "}
+                    {/* Add p-0 to avoid padding */}
                     {selectedCar && (
                       <UpdateCarDialog
                         closeModal={closeModal}
@@ -82,35 +73,7 @@ const CarsTable = ({ cars, onDelete }: CarsTableProps) => {
                 </Dialog>
 
                 {/* Delete Button with AlertDialog */}
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button size="sm" variant="destructive">
-                      <Trash2 className="w-4 h-4" />
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>
-                        Are you sure you want to delete this car?
-                      </AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action cannot be undone. Please confirm if you wish
-                        to delete this car.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <div className="flex flex-col sm:flex-row justify-end mt-4 gap-2">
-                      <AlertDialogCancel className="px-4 py-2 border rounded-md text-sm">
-                        Cancel
-                      </AlertDialogCancel>
-                      <AlertDialogAction
-                        onClick={() => onDelete(car._id)}
-                        className="px-4 py-2 bg-red-600 text-white rounded-md text-sm"
-                      >
-                        Okay
-                      </AlertDialogAction>
-                    </div>
-                  </AlertDialogContent>
-                </AlertDialog>
+                <DeleteCarDialog carId={car._id} onDelete={onDelete} />
               </div>
             </TableCell>
           </TableRow>

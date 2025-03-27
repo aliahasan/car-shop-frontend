@@ -6,6 +6,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import RHEditor from "@/mycomponents/form/RHEditor";
 import RHForm from "@/mycomponents/form/RHForm";
 import RHInput from "@/mycomponents/form/RHInput";
 import { useUpdateCarMutation } from "@/redux/features/admin/adminApi";
@@ -33,7 +34,7 @@ const UpdateCarDialog = ({ car, closeModal }: UpdateCarDialogProps) => {
   };
 
   const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const toastId = toast.loading("car is updating...");
+    const toastId = toast.loading("Car is updating...");
     try {
       const updatedImages = [...car.images];
       if (images.length > 0) {
@@ -68,69 +69,78 @@ const UpdateCarDialog = ({ car, closeModal }: UpdateCarDialogProps) => {
   };
 
   return (
-    <div className="max-w-3xl bg-white rounded-lg p-6 md:p-8">
+    <div className="rounded-lg p-6 md:p-8 overflow-auto max-h-[80vh]">
+      {" "}
+      {/* Limit max height */}
       <DialogHeader className="text-center">
         <DialogTitle className="text-xl font-semibold">Update Car</DialogTitle>
-        <DialogDescription className="text-gray-600">
+        <DialogDescription className="text-my-text_clr">
           Edit the details of <span className="font-medium">{car.name}</span>
         </DialogDescription>
       </DialogHeader>
+      <div className="my-5">
+        <RHForm onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <RHInput
+              type="text"
+              name="name"
+              label="Name"
+              defaultValue={car?.name}
+            />
+            <RHInput
+              type="text"
+              name="brand"
+              label="Brand"
+              defaultValue={car?.brand}
+            />
+            <RHInput
+              type="text"
+              name="model"
+              label="Model"
+              defaultValue={car?.model}
+            />
+            <RHInput
+              type="number"
+              name="price"
+              label="Price"
+              defaultValue={car?.price}
+            />
+            <RHInput
+              type="number"
+              name="quantity"
+              label="Quantity"
+              defaultValue={car?.quantity}
+            />
+          </div>
 
-      <RHForm onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <RHInput
-            type="text"
-            name="name"
-            label="Name"
-            defaultValue={car.name}
-          />
-          <RHInput
-            type="text"
-            name="brand"
-            label="Brand"
-            defaultValue={car.brand}
-          />
-          <RHInput
-            type="text"
-            name="model"
-            label="Model"
-            defaultValue={car.model}
-          />
-          <RHInput
-            type="number"
-            name="price"
-            label="Price"
-            defaultValue={car.price}
-          />
-          <RHInput
-            type="number"
-            name="quantity"
-            label="Quantity"
-            defaultValue={car.quantity}
-          />
-        </div>
-
-        <div className="mt-4">
-          <label className="block font-semibold text-gray-700">
-            Car Images
-          </label>
-          <Input
-            type="file"
-            onChange={handleFileChange}
-            className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
-            multiple
-          />
-        </div>
-
-        <div className="flex justify-end mt-6">
-          <Button
-            type="submit"
-            className="px-6 py-2 bg-blue-600 text-white hover:bg-blue-700"
-          >
-            Save changes
-          </Button>
-        </div>
-      </RHForm>
+          <div className="mt-4">
+            <label className="block font-semibold text-gray-700">
+              Car Images
+            </label>
+            <Input
+              type="file"
+              onChange={handleFileChange}
+              className="mt-1 w-full border border-gray-300 rounded-md px-3 py-2"
+              multiple
+            />
+          </div>
+          <div className="my-5">
+            <RHEditor
+              name="description"
+              label="Description"
+              defaultValue={car?.description}
+            />
+          </div>
+          <div className="flex justify-end mt-6">
+            <Button
+              type="submit"
+              className="px-6 py-2 bg-blue-600 text-white hover:bg-blue-700"
+            >
+              Save changes
+            </Button>
+          </div>
+        </RHForm>
+      </div>
     </div>
   );
 };

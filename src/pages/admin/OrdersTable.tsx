@@ -56,11 +56,11 @@ const OrdersTable = ({ orders }: OrderTableProps) => {
   };
 
   return (
-    <Table className="w-full text-white">
+    <Table className="w-full text-my-text_clr overflow-auto">
       <TableHeader>
         <TableRow>
           <TableHead>Customer Name</TableHead>
-          <TableHead>Customer Email</TableHead>
+
           <TableHead>Quantity</TableHead>
           <TableHead>Total Price</TableHead>
           <TableHead>Transaction Id</TableHead>
@@ -75,7 +75,6 @@ const OrdersTable = ({ orders }: OrderTableProps) => {
             <TableCell>
               <h1>{order?.user?.name}</h1>
             </TableCell>
-            <TableCell>{order.user.email}</TableCell>
             <TableCell>
               {order.cars?.reduce((total, car) => total + car.quantity, 0)}
             </TableCell>

@@ -14,7 +14,7 @@ const DashboardLayout = () => {
     <div className="flex min-h-screen">
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 w-72 bg-[#0C0A09] text-white shadow-lg border-r border-gray-700 overflow-y-auto transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 left-0 w-72  bg-gray-100 text-white shadow-lg overflow-y-auto border-r transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 z-40`}
       >
@@ -23,19 +23,17 @@ const DashboardLayout = () => {
 
       {/* Main Content */}
       <div className="flex-1 lg:ml-72">
-        {/* Navbar */}
-        <nav className="sticky top-0 bg-[#0C0A09] text-white  z-50 lg:left-72 backdrop-blur-md border-b lg:border-0">
-          <div className="flex justify-between lg:justify-end items-center px-6 py-2 lg:py-4">
-            {/* Logo on the left */}
+        <nav className="sticky top-0 z-20 lg:left-72 backdrop-blur-md border-b">
+          <div className="flex justify-between lg:justify-end items-center px-2 lg:px-6 py-2 lg:py-4">
             <Link to="/" className="lg:hidden">
               <h1 className="text-2xl font-bold text-my-btn_clr">RideHaven</h1>
             </Link>
-            {/* Menu Icon on the right */}
+
             <div className="flex items-center ">
               <div className="mr-1 lg:mr-2">{user && <UserMenu />}</div>
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="text-white p-2 rounded-lg focus:outline-none lg:hidden"
+                className=" p-2 rounded-lg focus:outline-none lg:hidden"
               >
                 {isSidebarOpen ? <X /> : <Menu />}
               </button>
@@ -44,7 +42,7 @@ const DashboardLayout = () => {
         </nav>
 
         {/* Outlet for nested routes */}
-        <div className="overflow-hidden px-4 py-4 lg:px-2 lg-py-2">
+        <div className="overflow-hidden px-2 py-4  lg-py-2">
           <Outlet />
         </div>
       </div>
@@ -52,7 +50,7 @@ const DashboardLayout = () => {
       {/* Backdrop for Mobile/Tablet */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          className="fixed inset-0 bg-opacity-50 z-30 lg:hidden"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         ></div>
       )}

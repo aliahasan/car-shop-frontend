@@ -4,9 +4,9 @@ import Marquee from "react-fast-marquee";
 
 const SectionTwo = () => {
   return (
-    <section className="py-6 lg:py-16">
+    <section className="py-6 lg:py-12">
       <div>
-        <div className="text-center py-6">
+        <div className="text-center py-10">
           <SectionTitle title="Popular Brands" heading="Our Popular Brands" />
         </div>
         <Marquee

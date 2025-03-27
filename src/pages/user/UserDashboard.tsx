@@ -58,7 +58,9 @@ const UserDashboard = () => {
     <>
       <PageTitle title="User Dashboard" />
       <div>
-        <h1 className="text-2xl font-bold pb-4 text-white">User Dashboard</h1>
+        <h1 className="text-2xl font-bold pb-4 text-my-text_clr">
+          User Dashboard
+        </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Total Expenses */}
           <Card>

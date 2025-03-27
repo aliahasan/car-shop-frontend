@@ -3,7 +3,7 @@ import SectionTitle from "@/shared/SectionTitle";
 
 const SectionOne = () => {
   return (
-    <section className="py-6 lg:py-20">
+    <section className="py-6 lg:py-12">
       <div className="flex flex-col space-y-8 lg:space-y-0 lg:flex-row lg:space-x-10">
         <div>
           <figure>
@@ -37,17 +37,17 @@ const SectionOne = () => {
 
           <div className="border-t flex mt-6 pt-6  md:justify-between space-x-6">
             <div className="text-center">
-              <h2 className="text-3xl font-semibold text-white">50+</h2>
+              <h2 className="text-3xl font-semibold text-my-text_clr">50+</h2>
               <p className="text-sm text-my-text_clr">Car Models</p>
             </div>
 
             <div className="text-center">
-              <h2 className="text-3xl font-semibold text-white">1000+</h2>
+              <h2 className="text-3xl font-semibold text-my-text_clr">1000+</h2>
               <p className="text-sm text-my-text_clr">Satisfied Customers</p>
             </div>
 
             <div className="text-center">
-              <h2 className="text-3xl font-semibold text-white">24/7</h2>
+              <h2 className="text-3xl font-semibold text-my-text_clr">24/7</h2>
               <p className="text-sm text-my-text_clr">Support Service</p>
             </div>
           </div>

@@ -33,6 +33,11 @@ export const colorOptions = [
   { label: "Magenta", value: "Magenta" },
 ];
 
+export const carStatusOptions = [
+  { label: "Recondition", value: "Recondition" },
+  { label: "Used", value: "Used" },
+];
+
 export const fuelTypeOptions = [
   { label: "Petrol", value: "Petrol" },
   { label: "Diesel", value: "Diesel" },

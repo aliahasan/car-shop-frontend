@@ -3,17 +3,19 @@ import RHForm from "@/mycomponents/form/RHForm";
 import RHInput from "@/mycomponents/form/RHInput";
 import RHSelect from "@/mycomponents/form/RHselect";
 import { useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form"; // Import useForm
+import { FieldValues, SubmitHandler } from "react-hook-form";
 
 import { Input } from "@/components/ui/input";
 import {
   brandOptions,
+  carStatusOptions,
   categoryOptions,
   colorOptions,
   featuresOptions,
   fuelTypeOptions,
   transmissionOptions,
 } from "@/constants/Car.constant";
+import RHEditor from "@/mycomponents/form/RHEditor";
 import { useCreateCarMutation } from "@/redux/features/admin/adminApi";
 import PageTitle from "@/shared/PageTitle";
 import { imageUpload } from "@/utils/uploadImage";
@@ -23,9 +25,9 @@ const AddCar = () => {
   const [images, setImages] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
 
-  const [createCar, { isLoading, isError }] = useCreateCarMutation();
+  const [createCar, { isLoading }] = useCreateCarMutation();
 
-  const { reset } = useForm();
+  //   const { reset } = useForm();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -42,6 +44,7 @@ const AddCar = () => {
       const carData = {
         ...data,
         price: Number(data.price),
+        year: Number(data.year),
         quantity: Number(data.quantity),
         mileage: Number(data.mileage),
         engineCapacity: Number(data.engineCapacity),
@@ -52,7 +55,6 @@ const AddCar = () => {
       const response = await createCar(carData).unwrap();
       if (response?.success || response?.data?.success) {
         toast.success("Car created successfully", { id: toastId });
-        reset();
         setImages([]);
         setPreviewUrls([]);
       } else {
@@ -72,22 +74,18 @@ const AddCar = () => {
     return <div>Loading...</div>;
   }
 
-  if (isError) {
-    return <div className="text-white">Error adding car</div>;
-  }
-
   return (
     <>
       <PageTitle title="Add car" />
       <div className="p-4">
         <div className="w-full">
-          <h1 className="text-2xl font-bold mb-6 text-white">Add a New Car</h1>
+          <h1 className="text-2xl font-bold mb-6 text-my-text_clr">
+            Add a New Car
+          </h1>
           <RHForm onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-white">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-my-text_clr">
               <RHInput type="text" name="name" label="Car Name" required />
-
               <RHInput type="text" name="model" label="Car Model" required />
-
               {/* Image Upload */}
               <div className="col-span-1">
                 <label className="font-semibold">Car Images</label>
@@ -109,9 +107,8 @@ const AddCar = () => {
                   ))}
                 </div>
               </div>
-              <RHInput type="text" name="description" label="Description" />
 
-              <RHInput type="text" name="year" label="Year" />
+              <RHInput type="number" name="year" label="Year" />
 
               <RHInput type="number" name="price" label="Car Price" required />
 
@@ -139,6 +136,11 @@ const AddCar = () => {
                 name="seatingCapacity"
                 label="Seating Capacity"
                 required
+              />
+              <RHSelect
+                name="carStatus"
+                options={carStatusOptions}
+                label="Car Status"
               />
               <RHSelect
                 name="brand"
@@ -180,6 +182,9 @@ const AddCar = () => {
                 label="Features"
               />
             </div>
+            <div className="py-5">
+              <RHEditor name="description" label="Description" />
+            </div>
 
             <div className="mt-6">
               <button
@@ -193,7 +198,6 @@ const AddCar = () => {
               </button>
             </div>
           </RHForm>
-          <div>input:</div>
         </div>
       </div>
     </>

@@ -29,7 +29,7 @@ interface OrderTableProps {
 
 const MyOrderTable = ({ orders, onCancel }: OrderTableProps) => {
   return (
-    <Table className="w-full text-white">
+    <Table className="w-full text-my-text_clr overflow-auto">
       <TableHeader>
         <TableRow>
           <TableHead>Car Name</TableHead>
