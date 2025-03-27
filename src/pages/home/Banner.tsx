@@ -6,17 +6,15 @@ const Banner = () => {
   return (
     <Container>
       <div className="relative w-full overflow-hidden">
-        {/* Image Wrapper */}
         <div className="relative w-full">
           {/* Image */}
           <img
             className="w-full lg:h-[60vh] object-cover rounded-b"
-            src="https://i.ibb.co/cf5rWQf/nicecar.jpg"
+            src="https://i.ibb.co.com/2Y0nxnnN/car-banner.png"
             alt="Banner"
           />
 
-          {/* Overlay (Applied only to the image) */}
-          <div className="absolute inset-0 bg-black/30 opacity-50 rounded"></div>
+          <div className="absolute inset-0 bg-black/50 opacity-50 rounded"></div>
         </div>
 
         {/* Text and Button Container (Desktop View) */}

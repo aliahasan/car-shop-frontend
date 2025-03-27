@@ -125,7 +125,7 @@ const SearchFilter = ({ categories }: SearchFilterProps) => {
           <>
             <div className="flex items-center justify-between text-sm my-4">
               <span>$ 0</span>
-              <span>$ 1000</span>
+              <span>$ 500000</span>
             </div>
             <Slider
               max={500000}
@@ -136,7 +136,7 @@ const SearchFilter = ({ categories }: SearchFilterProps) => {
               }}
               className="w-full"
             />
-            <p className="text-sm mt-2">Selected Price: ৳ {price[0]}</p>
+            <p className="text-sm mt-2">Selected Price: $ {price[0]}</p>
           </>
         )}
         <Separator className="my-4" />

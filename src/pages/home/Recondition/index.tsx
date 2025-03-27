@@ -7,6 +7,7 @@ import { TCar } from "@/types";
 const ReconditionCars = () => {
   const { data, isLoading, isError } = useGetReconditionCarsQuery(undefined);
   const reconditionCars = data?.data || [];
+  console.log(reconditionCars);
 
   if (isLoading) {
     <Loading />;

@@ -48,7 +48,7 @@ const AllProducts = () => {
         <div className="relative w-full">
           <div>
             <img
-              src="https://i.ibb.co.com/2Y0nxnnN/car-banner.png"
+              src="https://i.ibb.co/cf5rWQf/nicecar.jpg"
               alt="car_image"
               className="object-cover bg-center lg:h-[60vh]  rounded-b w-full"
             />
