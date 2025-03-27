@@ -30,7 +30,7 @@ const AboutFleet = () => {
           ].map((item, index) => (
             <motion.div
               key={index}
-              className="border p-6 rounded-lg shadow-lg text-center text-white"
+              className="border p-6 rounded-lg bg-white shadow-none text-center text-my-text_clr"
               variants={fadeInUp}
             >
               <div className="text-4xl text-my-btn_clr mb-4">🚗</div>

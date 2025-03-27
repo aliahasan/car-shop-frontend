@@ -20,9 +20,11 @@ const SearchFilter = ({ categories }: SearchFilterProps) => {
     category: false,
     brands: false,
     rating: false,
+    year: false,
   });
 
   const [price, setPrice] = useState([0]);
+  const [year, setYear] = useState([0]);
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -70,6 +72,41 @@ const SearchFilter = ({ categories }: SearchFilterProps) => {
         )}
       </div>
       <Separator />
+
+      {/* Filter by year */}
+      <div className="my-6">
+        <div
+          className="flex justify-between items-center cursor-pointer"
+          onClick={() => toggleSection("year")}
+        >
+          <h2 className="text-md font-semibold">Year</h2>
+          <ChevronDown
+            className={`transition-transform ${
+              filterSection.year ? "rotate-180" : ""
+            }`}
+          />
+        </div>
+        {filterSection.year && (
+          <>
+            <div className="flex items-center justify-between text-sm my-4">
+              <span>2010</span>
+              <span>2025</span>
+            </div>
+            <Slider
+              max={2025}
+              min={2010}
+              step={1}
+              onValueChange={(value) => {
+                setYear(value);
+                handleSearchQuery("year", value[0]);
+              }}
+              className="w-full"
+            />
+            <p className="text-sm mt-2">Selected year: ৳ {year[0]}</p>
+          </>
+        )}
+        <Separator className="my-4" />
+      </div>
 
       {/* Filter by Price */}
       <div className="my-6">

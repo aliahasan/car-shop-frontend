@@ -33,7 +33,7 @@ const Pagination = ({ totalPage }: { totalPage: number }) => {
             currentPage === index + 1
               ? "bg-sky-600 text-white"
               : "bg-gray-100 text-black"
-          } w-8 h-8 rounded-full flex items-center justify-center hover:bg-orange-500`}
+          } w-8 h-8 rounded-full flex items-center justify-center hover:bg-blue-500`}
         >
           {index + 1}
         </Button>

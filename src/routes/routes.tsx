@@ -12,11 +12,13 @@ import CarDetails from "@/pages/allProducts/CarDetails";
 
 import ErrorPage from "@/pages/error/ErrorPage";
 import Home from "@/pages/home/Home";
-import Login from "@/pages/Login";
+import LoginForm from "@/pages/Login/LoginForm";
 import VerifyOrder from "@/pages/order/VerifyOrder";
-import Register from "@/pages/Register";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import Register from "@/pages/Register/Register";
 import ServicePage from "@/pages/Service";
 import ServiceDetailsPage from "@/pages/Service/ServiceDetails";
+import TermsAndConditions from "@/pages/TermsAndCondition";
 import MyOrders from "@/pages/user/MyOrders";
 import Profile from "@/pages/user/Profile";
 import Setting from "@/pages/user/Setting";
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/terms-condition",
+        element: <TermsAndConditions />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
       },
     ],
   },
@@ -157,7 +167,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <LoginForm />,
   },
   {
     path: "/register",

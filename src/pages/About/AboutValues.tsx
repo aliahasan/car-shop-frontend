@@ -5,13 +5,13 @@ const AboutValues = () => {
     <div>
       {/* Values & Commitment Section */}
       <motion.section
-        className="py-16 bg-[#18120B]"
+        className="py-16 bg-white"
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
       >
         <motion.h2
-          className="text-3xl text-white font-bold text-center mb-8"
+          className="text-3xl text-my-text-clr font-bold text-center mb-8"
           variants={fadeInUp}
         >
           Values & Commitment
@@ -22,7 +22,7 @@ const AboutValues = () => {
         >
           <motion.div className="text-center" variants={fadeInUp}>
             <div className="text-4xl text-my-btn_clr mb-4">🌟</div>
-            <h3 className="text-xl text-white font-semibold mb-2">
+            <h3 className="text-xl text-my-text-clr font-semibold mb-2">
               Customer Service
             </h3>
             <p className="text-my-text_clr px-4">
@@ -32,7 +32,7 @@ const AboutValues = () => {
           </motion.div>
           <motion.div className="text-center" variants={fadeInUp}>
             <div className="text-4xl text-my-btn_clr mb-4">🌱</div>
-            <h3 className="text-xl text-white font-semibold mb-2">
+            <h3 className="text-xl text-my-text-clr font-semibold mb-2">
               Sustainability
             </h3>
             <p className="text-my-text_clr px-4">

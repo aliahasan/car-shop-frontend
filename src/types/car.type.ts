@@ -19,6 +19,7 @@ export type TCar = {
   transmission: string;
   warranty: string;
   year: number;
+  carStatus?: string;
   _id: string;
 };
 
@@ -45,6 +46,7 @@ export interface CarCardProps {
     warranty: string;
     year: number;
     _id: string;
+    carStatus?: string;
   };
 }
 

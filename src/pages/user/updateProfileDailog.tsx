@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import RHForm from "@/mycomponents/form/RHForm";
 import RHInput from "@/mycomponents/form/RHInput";
+import { Edit2 } from "lucide-react";
 import { useState } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 
@@ -47,7 +48,10 @@ export const UpdateProfileDialog = ({
     <div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">Update Profile</Button>
+          <Button className="bg-my-btn_clr rounded-full">
+            <Edit2 />
+            Update Profile
+          </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

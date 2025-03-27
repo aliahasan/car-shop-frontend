@@ -31,6 +31,12 @@ const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["me"],
     }),
+    getUserMeta: builder.query({
+      query: () => ({
+        url: "/user-meta",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -39,4 +45,5 @@ export const {
   useCancelOrderMutation,
   useGetMyselfQuery,
   useUpdateMyselfMutation,
+  useGetUserMetaQuery,
 } = userApi;

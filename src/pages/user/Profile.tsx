@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Loading from "@/mycomponents/layout/Loading";
 import { selectedUser } from "@/redux/features/auth/authSlice";
 import {
@@ -15,6 +9,7 @@ import {
 } from "@/redux/features/user/userApi";
 import { useAppSelector } from "@/redux/hook";
 import PageTitle from "@/shared/PageTitle";
+import { Calendar, Mail, MapPin, Phone } from "lucide-react";
 import toast from "react-hot-toast";
 import { UpdateProfileDialog } from "./updateProfileDailog";
 
@@ -52,84 +47,65 @@ const Profile = () => {
   return (
     <>
       <PageTitle title={`${user?.role as string} | Profile`} />
-      <div className="flex justify-center items-center p-6 ">
-        <Card className="w-full max-w-3xl shadow-lg p-6">
-          <CardHeader className="flex flex-col items-center text-center">
-            <Avatar className="w-24 h-24">
+      <div className="max-w-7xl mx-auto p-6 bg-white shadow rounded text-my-text_clr">
+        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 p-6 border-b">
+          <div className="flex items-center gap-4 w-full sm:w-auto">
+            <Avatar className="w-20 h-20 sm:w-24 sm:h-24">
               <AvatarImage src="https://github.com/shadcn.png" alt="Profile" />
               <AvatarFallback>{me?.name?.charAt(0) || "U"}</AvatarFallback>
             </Avatar>
-            <CardTitle className="mt-4 text-2xl font-bold">
-              {me?.name || "User"}
-            </CardTitle>
-            <CardDescription className="text-gray-600">
-              {me?.email}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {/* User Details */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Name
-                </label>
-                <p className="text-gray-900 font-semibold">
-                  {me?.name || "N/A"}
-                </p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  City
-                </label>
-                <p className="text-gray-900 font-semibold">
-                  {me?.city || "N/A"}
-                </p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Address
-                </label>
-                <p className="text-gray-900 font-semibold">
-                  {me?.address || "N/A"}
-                </p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Phone
-                </label>
-                <p className="text-gray-900 font-semibold">
-                  {me?.phone || "N/A"}
-                </p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Role
-                </label>
-                <p className="text-gray-900 font-semibold">{me?.role}</p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Account Created
-                </label>
-                <p className="text-gray-900 font-semibold">
-                  {new Date(me?.createdAt).toLocaleDateString()}
-                </p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Last Updated
-                </label>
-                <p className="text-gray-900 font-semibold">
-                  {new Date(me?.updatedAt).toLocaleDateString()}
-                </p>
-              </div>
+            <div className="flex-1 min-w-0">
+              <h2 className="text-xl sm:text-2xl font-semibold truncate">
+                {me?.name || "User"}
+              </h2>
+              <p className="text-gray-600 text-sm sm:text-base truncate">
+                {me?.email}
+              </p>
+              <span className="inline-block bg-blue-100 text-blue-600 text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-md mt-1 uppercase">
+                {me?.role}
+              </span>
             </div>
-            {/* Update Button */}
-            <div className="flex justify-center mt-6">
-              <UpdateProfileDialog user={me} onSave={handleSave} />
-            </div>
-          </CardContent>
-        </Card>
+          </div>
+          <div className="w-full sm:w-auto  mt-4 sm:mt-0">
+            <UpdateProfileDialog user={me} onSave={handleSave} />
+          </div>
+        </div>
+
+        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Card className="shadow-none">
+            <CardContent className="p-4 space-y-2">
+              <Mail className="text-my-text_clr" />
+              <p className="font-semibold">Email</p>
+              <p className="text-sm sm:text-base break-all">{me?.email}</p>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-none">
+            <CardContent className="p-4 space-y-2">
+              <Phone className="text-my-text_clr" />
+              <p className="font-semibold">Phone</p>
+              <p className="text-sm sm:text-base">{me?.phone || "N/A"}</p>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-none">
+            <CardContent className="p-4 space-y-2">
+              <MapPin className="text-my-text_clr" />
+              <p className="font-semibold">Address</p>
+              <p className="text-sm sm:text-base">{me?.address || "N/A"}</p>
+            </CardContent>
+          </Card>
+
+          <Card className="sm:col-span-2 lg:col-span-3 shadow-none">
+            <CardContent className="p-4 space-y-2">
+              <Calendar className="text-my-text_clr" />
+              <p className="font-semibold">Member Since</p>
+              <p className="text-sm sm:text-base">
+                {new Date(me?.createdAt).toLocaleDateString()}
+              </p>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </>
   );

@@ -46,7 +46,7 @@ const MyOrderTable = ({ orders, onCancel }: OrderTableProps) => {
               {order.cars.map((car) => (
                 <div key={car?.car._id}>
                   <p>{car?.car.name}</p>
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-my-text_clr">
                     Quantity: {car?.quantity}
                   </p>
                 </div>

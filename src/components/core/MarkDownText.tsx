@@ -7,7 +7,7 @@ const MarkDownText = ({ text }: { text: string }) => {
     <div>
       {parsedContent ? (
         <article
-          className={`markdown-content text-gray-800 dark:text-gray-300 leading-relaxed`}
+          className={`markdown-content text-my-text_clr  leading-relaxed`}
           dangerouslySetInnerHTML={{ __html: parsedContent }}
         />
       ) : (

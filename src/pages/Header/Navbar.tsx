@@ -15,6 +15,8 @@ const Navbar = () => {
     { label: "Cars", href: "/all-products" },
     { label: "About", href: "/about" },
     { label: "Services", href: "/service" },
+    { label: "Terms & Condition", href: "/terms-condition" },
+    { label: "Privacy & Policy", href: "/privacy-policy" },
   ];
   const user = useAppSelector(selectedUser);
 

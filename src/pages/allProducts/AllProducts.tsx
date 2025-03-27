@@ -81,7 +81,7 @@ const AllProducts = () => {
           </div>
         </section>
       </Container>
-      <div className="text-center flex items-center justify-center mt-10">
+      <div className="text-center flex items-center justify-center my-10">
         <Pagination totalPage={data?.meta?.totalPage} />
       </div>
     </>

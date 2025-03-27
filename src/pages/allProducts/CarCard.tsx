@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -52,7 +53,16 @@ const CarCard = ({ car }: CarCardProps) => {
             {car?.brand} | {car?.model}
           </p>
         </div>
-        <p className="text-md font-semibold text-my-text_clr">${car?.price}</p>
+        <div className="flex justify-between items-center">
+          <p className="text-md font-semibold text-my-text_clr">
+            ${car?.price}
+          </p>
+          {car?.carStatus && (
+            <span>
+              <Badge>{car?.carStatus && car.carStatus}</Badge>
+            </span>
+          )}
+        </div>
       </CardContent>
 
       {/* View Details and Add to Cart Buttons */}

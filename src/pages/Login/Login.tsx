@@ -1,31 +1,39 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import RHForm from "@/mycomponents/form/RHForm";
 import RHInput from "@/mycomponents/form/RHInput";
-import { useRegisterMutation } from "@/redux/features/auth/authApi";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { setUser } from "@/redux/features/auth/authSlice";
+import { clearCart } from "@/redux/features/cart/CartSlice";
+import { useAppDispatch } from "@/redux/hook";
+import { verifyToken } from "@/utils/verifyToken";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Login = () => {
   const navigate = useNavigate();
-  const [registerUser, { isLoading }] = useRegisterMutation();
+  const dispatch = useAppDispatch();
+  const [loginData, { isLoading }] = useLoginMutation();
 
   const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const toastId = toast.loading("creating account...");
+    const toastId = toast.loading("login in...");
     try {
-      const res = await registerUser(data).unwrap();
-      if (res?.success || res?.data?.success) {
-        toast.success("Registration successful", { id: toastId });
-        navigate("/login");
-      } else {
-        toast.error("Registration failed. Please try again.", { id: toastId });
+      const res = await loginData(data).unwrap();
+      const user = verifyToken(res?.data as string);
+      if (!user) {
+        toast.error("Invalid credentials", { id: toastId });
+        return;
       }
+      toast.success("Login success", { id: toastId });
+      dispatch(clearCart());
+      dispatch(setUser({ user: user, token: res.data }));
+      navigate("/");
     } catch (error: any) {
-      if (error.data && error.data.message) {
-        const errorMessage = error.data.message || "Failed to register";
+      if (error.data && error.data.error) {
+        const errorMessage = error.data.message || "Failed to login";
         toast.error(errorMessage, { id: toastId });
       } else {
-        toast.error("Failed to register", { id: toastId });
+        toast.error("Failed to login", { id: toastId });
       }
     }
   };
@@ -34,25 +42,14 @@ const Register = () => {
     <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-white text-center text-2xl font-bold tracking-tight">
-          Register your account
+          Sign in to your account
         </h2>
       </div>
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
         <RHForm onSubmit={handleSubmit}>
-          {/* Name Field */}
-          <div className="space-y-2 text-my-text_clr">
-            <RHInput
-              type="text"
-              name="name"
-              label="Your name"
-              placeholder="Enter your name"
-              required
-            />
-          </div>
-
           {/* Email Field */}
-          <div className="mt-4 space-y-2 text-my-text_clr">
+          <div className="space-y-2 text-my-text_clr">
             <RHInput
               type="email"
               name="email"
@@ -73,26 +70,25 @@ const Register = () => {
             />
           </div>
 
-          {/* Submit Button */}
           <div className="mt-6">
             <button
               type="submit"
               className="flex w-full justify-center rounded-md bg-my-btn_clr px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
-              {isLoading ? "Please wait..." : "Register"}
+              {isLoading ? "Please wait..." : "Sign in"}
             </button>
           </div>
         </RHForm>
 
-        {/* Login Link */}
+        {/* Register Link */}
         <div className="text-white">
           <p className="mt-4 text-sm text-center">
-            Already have an account? Please{" "}
+            Don't have an account? Please{" "}
             <Link
-              to="/login"
+              to="/register"
               className="text-my-btn_clr underline underline-offset-4"
             >
-              Login
+              Register
             </Link>
           </p>
         </div>
@@ -101,4 +97,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

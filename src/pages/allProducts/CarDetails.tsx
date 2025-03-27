@@ -9,13 +9,16 @@ import { useAppDispatch } from "@/redux/hook";
 import Container from "@/shared/Container";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import RelatedCars from "./RelatedCars";
 
 const CarDetails = () => {
   const { id } = useParams();
   const { data: carData, isLoading } = useGetCarByIdQuery(id, {
     refetchOnMountOrArgChange: true,
   });
+  console.log(carData);
   const car = carData?.data;
+  const relatedCars = car?.relatedCars || [];
 
   const dispatch = useAppDispatch();
 
@@ -77,10 +80,13 @@ const CarDetails = () => {
                   />
                 </div>
               ))}
+              <div className="py-5">
+                <MarkDownText text={car?.description} />
+              </div>
             </div>
 
             {/* Car Specifications */}
-            <div className="space-y-8">
+            <div className="space-y-8 mb-10">
               {/* Price and Stock Status */}
               <div className="flex items-center justify-between">
                 <span className="text-3xl font-bold text-my-text_clr">
@@ -173,7 +179,7 @@ const CarDetails = () => {
               <div className="flex  gap-4">
                 <Button
                   onClick={() => handleAddToCart(car?._id)}
-                  className="bg-my-btn_clr px-4  text-white  font-semibold py-2 rounded transition-colors duration-300"
+                  className="bg-my-btn_clr rounded-full px-4  text-white  font-semibold py-2  transition-colors duration-300"
                 >
                   Add to Cart
                 </Button>
@@ -181,9 +187,11 @@ const CarDetails = () => {
             </div>
           </div>
         </div>
-        <div className="py-10">
-          <MarkDownText text={car?.description} />
-        </div>
+      </div>
+      <div className="my-10">
+        {relatedCars && relatedCars.length > 0 && (
+          <RelatedCars cars={relatedCars} />
+        )}
       </div>
     </Container>
   );
