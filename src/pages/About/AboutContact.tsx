@@ -3,7 +3,7 @@ import { fadeInUp, staggerContainer } from "./About.constant";
 const AboutContact = () => {
   return (
     <div>
-      <div className="bg-white ">
+      <div className="bg-white lg:my-12">
         <motion.section
           className="py-16"
           initial="hidden"
@@ -32,7 +32,7 @@ const AboutContact = () => {
               <h3 className="text-xl text-my-text-clr font-semibold mb-2">
                 Email
               </h3>
-              <p className="text-my-text_clr">info@mngo.com</p>
+              <p className="text-my-text_clr">ridehaven@gmail.com</p>
             </motion.div>
             <motion.div className="text-center" variants={fadeInUp}>
               <div className="text-4xl text-my-btn_clr mb-4">📍</div>

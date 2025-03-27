@@ -48,4 +48,5 @@ export const {
   useGetCarByIdQuery,
   useGetAllCarCategoriesQuery,
   useGetAllBrandsQuery,
+  useGetReconditionCarsQuery,
 } = carApi;

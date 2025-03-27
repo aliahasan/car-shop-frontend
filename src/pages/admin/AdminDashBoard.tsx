@@ -103,7 +103,7 @@ const AdminDashBoard = () => {
             <CardDescription>This month</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold">
+            <p className="text-4xl font-bold text-my-text_clr">
               ${totalRevenue.toLocaleString()}
             </p>
           </CardContent>
@@ -114,7 +114,7 @@ const AdminDashBoard = () => {
             <CardDescription>This month</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold">{totalOrders}</p>
+            <p className="text-4xl font-bold text-my-text_clr">{totalOrders}</p>
           </CardContent>
         </Card>
         <Card>
@@ -123,7 +123,7 @@ const AdminDashBoard = () => {
             <CardDescription>Total Cars</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold">{totalCars}</p>
+            <p className="text-4xl font-bold text-my-text_clr">{totalCars}</p>
           </CardContent>
         </Card>
       </div>

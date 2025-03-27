@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Popover,
   PopoverContent,
@@ -6,6 +7,7 @@ import {
 import { logout } from "@/redux/features/auth/authSlice";
 import { clearCart } from "@/redux/features/cart/CartSlice";
 import { useAppDispatch } from "@/redux/hook";
+import { Separator } from "@radix-ui/react-separator";
 import Cookies from "js-cookie";
 import { User } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -28,20 +30,20 @@ const UserMenu = () => {
           <User className="h-6 w-6 text-my-text_clr" />
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-40 bg-black text-white border border-gray-700 rounded-md p-2 shadow-lg">
+      <PopoverContent className="w-40 bg-white text-my-text_clr border rounded-md py-6 shadow-md">
         <div className="flex flex-col space-y-2">
-          <Link
-            to="/dashboard"
-            className="hover:bg-gray-800 px-2 py-1 rounded-md transition"
-          >
-            Dashboard
-          </Link>
-          <button
+          <div className="bg-gray-100 p-2 rounded">
+            <Link to="/dashboard" className=" px-2 py-1 rounded transition">
+              Dashboard
+            </Link>
+          </div>
+          <Separator />
+          <Button
             onClick={handleLogout}
-            className="hover:bg-red-600 px-2 py-1 rounded-md text-left transition"
+            className="hover:bg-red-600 hover:text-white px-2 py-1 text-left transition bg-gray-100 text-my-text_clr"
           >
             Logout
-          </button>
+          </Button>
         </div>
       </PopoverContent>
     </Popover>

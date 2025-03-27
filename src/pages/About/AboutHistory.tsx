@@ -5,16 +5,16 @@ import { fadeInUp, staggerContainer } from "./About.constant";
 const AboutHistory = () => {
   return (
     <motion.section
-      className="py-4 lg:py-12 "
+      className="py-4 lg:py-16"
       initial="hidden"
       animate="visible"
       variants={staggerContainer}
     >
       <motion.div
-        className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+        className="flex flex-col  lg:flex-row-reverse gap-8"
         variants={staggerContainer}
       >
-        <motion.div className="space-y-4 md:mt-8" variants={fadeInUp}>
+        <motion.div className="space-y-4 md:mt-8 lg:w-1/2" variants={fadeInUp}>
           <SectionTitle title="Founding History" heading="Our History" />
 
           <p className="text-my-text_clr md:text-lg">
@@ -28,11 +28,11 @@ const AboutHistory = () => {
             the automotive industry, serving thousands of customers nationwide.
           </p>
         </motion.div>
-        <motion.div variants={fadeInUp}>
+        <motion.div variants={fadeInUp} className="flex-1">
           <img
             src="https://i.ibb.co.com/RTbj9Jt0/founding.jpg"
             alt="Founding History"
-            className="w-full h-auto rounded-lg shadow-lg"
+            className="w-full h-auto rounded-md"
           />
         </motion.div>
       </motion.div>

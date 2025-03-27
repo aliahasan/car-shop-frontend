@@ -19,7 +19,7 @@ const CategorySection = () => {
     return <Loading />;
   }
   if (isError) {
-    return <div>Something Went wrong</div>;
+    return <div>Something Went wrong ! </div>;
   }
 
   const categories: ICategories[] = categoriesData?.data || [];
@@ -43,13 +43,13 @@ const CategorySection = () => {
           <div className="flex items-center gap-10 px-10 ">
             {categories.map((category: ICategories, i) => (
               <div
-                onClick={() => handleNavigate(category.category)}
+                onClick={() => handleNavigate(category?.category)}
                 key={i}
                 className="flex-shrink-0 bg-gray-100 p-4 rounded hover:cursor-pointer"
               >
                 <img
-                  src={category.image[0]}
-                  alt={category.category}
+                  src={category?.image[0]}
+                  alt={category?.category}
                   className="w-36 h-24 rounded"
                 />
                 <h1 className="text-center pt-2">{category?.category}</h1>

@@ -57,9 +57,15 @@ const CarCard = ({ car }: CarCardProps) => {
           <p className="text-md font-semibold text-my-text_clr">
             ${car?.price}
           </p>
-          {car?.carStatus && (
+
+          {car?.carStatus ? (
             <span>
               <Badge>{car?.carStatus && car.carStatus}</Badge>
+            </span>
+          ) : (
+            <span>
+              {" "}
+              <Badge>New car</Badge>
             </span>
           )}
         </div>

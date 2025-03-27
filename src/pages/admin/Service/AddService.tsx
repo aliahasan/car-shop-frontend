@@ -41,7 +41,7 @@ const AddService = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white p-4 rounded-lg shadow-sm">
+    <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-sm">
       <div className="flex flex-col md:flex-row gap-6 items-center">
         <div className="w-full md:w-auto">
           <RHImage
@@ -65,8 +65,8 @@ const AddService = () => {
           <RHInput
             name="title"
             type="text"
-            placeholder="Enter your blog title"
-            label="Blog Title"
+            placeholder="Enter your service title"
+            label="Service Title"
             required
           />
         </div>
